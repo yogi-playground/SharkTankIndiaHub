@@ -55,7 +55,7 @@ const learnPage = {
             <div class="muted" style="font-size:13px">Build your pitch structure section by section and download it.</div>
             <div style="margin-top:12px;font-size:12px;color:var(--green)">Build →</div>
           </div>
-          <div class="card" onclick="window.open('/training.html','_blank')" style="cursor:pointer;border-top:3px solid var(--red);position:relative;overflow:hidden">
+          <div class="card" onclick="window.open('training.html','_blank')" style="cursor:pointer;border-top:3px solid var(--red);position:relative;overflow:hidden">
             <div style="position:absolute;top:0;right:0;background:var(--red);font-size:9px;font-weight:700;color:#fff;padding:3px 10px;border-radius:0 0 0 10px;letter-spacing:0.5px">NEW</div>
             <div style="font-size:28px;margin-bottom:10px">🎓</div>
             <div style="font-weight:600;margin-bottom:5px;color:var(--heading)">Training Academy</div>
