@@ -222,7 +222,7 @@ const app = {
 
       container.innerHTML = `
         <div class="container section">
-          <div style="margin-bottom:8px"><span class="muted" style="font-size:13px;cursor:pointer" onclick="app.showPage('seasons')">← All Pitches</span></div>
+          <div style="margin-bottom:8px"><span class="muted" style="font-size:13px;cursor:pointer" onclick="history.back()">← Back</span></div>
 
           <div style="display:flex;flex-wrap:wrap;align-items:start;justify-content:space-between;gap:12px;margin-bottom:8px">
             <div>
