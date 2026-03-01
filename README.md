@@ -1,6 +1,10 @@
 # 🦈 Shark Tank India Hub
 
 > **A comprehensive platform for exploring Shark Tank India pitches, learning entrepreneurship, and preparing for investor presentations.**
+>
+> Shark Tank India changed how millions of Indians think about business — for the first time, people could see what it really takes to build a company and pitch to investors. Yet on TV, details flash by in seconds and there's no way to pause, compare, or go deeper. This platform solves that by bringing every pitch from all 5 seasons into one searchable, analyzable space — so you can study deals at your own pace, compare investments, and explore the full portfolio of every shark.
+>
+> Whether you're a fan inspired by the show, an aspiring entrepreneur, or an active founder preparing to pitch — this platform is built for you. The **Get Ready Academy** offers structured training to help new founders learn investor language, financial metrics, and pitch strategy. The **Personal Dashboard** generates tailored talking points and surfaces the exact questions investors commonly ask in your industry — so you walk into any pitch room prepared.
 
 ## 🎯 About the Project
 
@@ -357,3 +361,4 @@ Data sourced from [Satya Thirumani's Shark Tank India Dataset on Kaggle](https:/
 ## 🚀 Getting Started
 
 ### Local Development
+
