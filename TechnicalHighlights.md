@@ -182,3 +182,33 @@ Developer → git push → GitHub Actions → GitHub Pages CDN
 ---
 
 *Built with ❤️ using GitHub Copilot | Submitted to Microsoft Agents League 2026*
+
+---
+
+## 🧗 Challenges & Learnings
+
+### ⚡ Top 5 Challenges We Solved
+
+| # | Challenge | Solution | Learning |
+|---|-----------|----------|----------|
+| 1 | **`file://` CORS errors locally** | Switched to `python -m http.server` + documented in README | Static sites always need a local web server for `fetch()` |
+| 2 | **Background image missing on GitHub Pages** | Fixed `url('/images/')` → `url('../images/')` — CSS paths resolve relative to the CSS file, not the HTML | Always use file-relative paths in CSS |
+| 3 | **Light mode invisible text** | Replaced all hardcoded `rgba(255,255,255,x)` with CSS variables (`var(--text)`, `var(--muted)`) | Never hardcode colours — always use theme variables |
+| 4 | **GitHub Actions exit code 128** | Switched from legacy `gh-pages` branch deploy to official `actions/deploy-pages@v4` with proper `write` permissions | Use GitHub's official Pages actions for reliable CI/CD |
+| 5 | **Training page layout broken** | Added `flex-direction: column` to `body` — default flex is `row`, stacking header & content side by side | Always explicitly set flex direction |
+
+---
+
+### 💡 Key Learnings
+
+- 🤖 **GitHub Copilot = 40% faster** — Especially for repetitive patterns like table rendering, chart config, and accessibility attributes
+- 🎨 **CSS Variables are powerful** — One class toggle (`html.light`) updates the entire UI instantly across 7 pages
+- 📦 **Static is underrated** — No backend, no database, no server costs — yet delivers a full SPA experience
+- ♿ **Accessibility from day one** — Retrofitting ARIA labels and keyboard navigation is harder than building it in from the start
+- 🚀 **GitHub Pages path gotchas** — Absolute paths (`/images/`) break on subdirectory deployments; relative paths always win
+
+---
+
+### 🏆 What We're Most Proud Of
+
+> **Building a full learning platform — Academy, Dashboard, Analytics, and 702-pitch database — as a pure static site with zero backend, deploying in under 2 minutes, for free, using GitHub Copilot as an AI pair programmer.**
