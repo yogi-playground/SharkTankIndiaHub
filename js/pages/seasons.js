@@ -62,13 +62,13 @@ const seasonsPage = {
             <table>
               <thead>
                 <tr style="background:rgba(20,20,28,0.97)">
-                  <th onclick="seasonsPage._setSort('ep')" style="background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;user-select:none;white-space:nowrap">S/EP <span id="sort-ep" style="font-size:10px">↕</span></th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">STARTUP</th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">INDUSTRY</th>
-                  <th onclick="seasonsPage._setSort('ask')" style="background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;user-select:none;white-space:nowrap">ASK <span id="sort-ask" style="font-size:10px">↕</span></th>
-                  <th onclick="seasonsPage._setSort('deal')" style="background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;user-select:none;white-space:nowrap">FINAL DEAL <span id="sort-deal" style="font-size:10px">↕</span></th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">SHARKS</th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">STATUS</th>
+                  <th onclick="seasonsPage._setSort('ep')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">S/EP <span id="sort-ep" style="font-size:10px">↕</span></th>
+                  <th style="background:transparent;color:var(--muted)">STARTUP</th>
+                  <th style="background:transparent;color:var(--muted)">INDUSTRY</th>
+                  <th onclick="seasonsPage._setSort('ask')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">ASK <span id="sort-ask" style="font-size:10px">↕</span></th>
+                  <th onclick="seasonsPage._setSort('deal')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">FINAL DEAL <span id="sort-deal" style="font-size:10px">↕</span></th>
+                  <th style="background:transparent;color:var(--muted)">SHARKS</th>
+                  <th style="background:transparent;color:var(--muted)">STATUS</th>
                 </tr>
               </thead>
               <tbody id="pitches-tbody"><tr><td colspan="7" style="text-align:center;padding:40px;color:rgba(255,255,255,0.4)">Loading…</td></tr></tbody>
@@ -136,17 +136,17 @@ const seasonsPage = {
     tbody.innerHTML = sorted.map((p, i) => {
       const rowBg = i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent';
       return `<tr onclick="app.showPitch('${p.id}')" style="cursor:pointer;background:${rowBg};border-bottom:1px solid rgba(255,255,255,0.06)" onmouseenter="this.style.background='rgba(232,25,44,0.07)'" onmouseleave="this.style.background='${rowBg}'">
-        <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.4);white-space:nowrap">E${p.ep}</td>
+        <td class="mono" style="font-size:12px;color:var(--muted);white-space:nowrap">E${p.ep}</td>
         <td>
-          <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:#ffffff;font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">${p.type || ''}</div>
+          <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:var(--text);font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
         </td>
         <td><span class="badge badge-industry">${p.industry}</span></td>
-        <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.55)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
-        <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? '#22c55e' : 'rgba(255,255,255,0.3)'}">
+        <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
+        <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? 'var(--green)' : 'var(--muted)'}">
           ${p.funded ? (p.deal || '—') + ' / ' + (p.dealEq || '—') + '%' : '—'}
         </td>
-        <td style="font-size:12px;color:rgba(255,255,255,0.6)">${(p.sharks || []).join(', ') || '—'}</td>
+        <td style="font-size:12px;color:var(--muted)">${(p.sharks || []).join(', ') || '—'}</td>
         <td>${p.funded ? '<span class="badge badge-funded">✓ Funded</span>' : '<span class="badge badge-nodeal">✗ No Deal</span>'}</td>
       </tr>`;
     }).join('');
@@ -195,17 +195,17 @@ const seasonsPage = {
         const isLive = p.season === 5;
         const rowBg = i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent';
         return `<tr onclick="app.showPitch('${p.id}')" style="cursor:pointer;background:${rowBg};border-bottom:1px solid rgba(255,255,255,0.06)" onmouseenter="this.style.background='rgba(232,25,44,0.07)'" onmouseleave="this.style.background='${rowBg}'">
-          <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.4);white-space:nowrap">S${p.season}&nbsp;E${p.ep}${isLive ? ' 🟡' : ''}</td>
+          <td class="mono" style="font-size:12px;color:var(--muted);white-space:nowrap">S${p.season}&nbsp;E${p.ep}${isLive ? ' 🟡' : ''}</td>
           <td>
-            <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:#ffffff;font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">${p.type || ''}</div>
+            <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:var(--text);font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
           </td>
           <td><span class="badge badge-industry">${p.industry}</span></td>
-          <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.55)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
-          <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? '#22c55e' : 'rgba(255,255,255,0.3)'}">
+          <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
+          <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? 'var(--green)' : 'var(--muted)'}">
             ${p.funded ? (p.deal || '—') + ' / ' + (p.dealEq || '—') + '%' : '—'}
           </td>
-          <td style="font-size:12px;color:rgba(255,255,255,0.6)">${(p.sharks || []).join(', ') || '—'}</td>
+          <td style="font-size:12px;color:var(--muted)">${(p.sharks || []).join(', ') || '—'}</td>
           <td>${p.funded ? '<span class="badge badge-funded">✓ Funded</span>' : '<span class="badge badge-nodeal">✗ No Deal</span>'}</td>
         </tr>`;
       }).join('');
@@ -263,13 +263,13 @@ const seasonsPage = {
             <table>
               <thead>
                 <tr style="background:rgba(20,20,28,0.97)">
-                  <th onclick="seasonsPage._setDetailSort('ep')" style="background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;user-select:none;white-space:nowrap">EP <span id="detail-sort-ep" style="font-size:10px">↑</span></th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">STARTUP</th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">INDUSTRY</th>
-                  <th onclick="seasonsPage._setDetailSort('ask')" style="background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;user-select:none;white-space:nowrap">ASK <span id="detail-sort-ask" style="font-size:10px">↕</span></th>
-                  <th onclick="seasonsPage._setDetailSort('deal')" style="background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;user-select:none;white-space:nowrap">FINAL DEAL <span id="detail-sort-deal" style="font-size:10px">↕</span></th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">SHARKS</th>
-                  <th style="background:transparent;color:rgba(255,255,255,0.5)">STATUS</th>
+                  <th onclick="seasonsPage._setDetailSort('ep')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">EP <span id="detail-sort-ep" style="font-size:10px">↑</span></th>
+                  <th style="background:transparent;color:var(--muted)">STARTUP</th>
+                  <th style="background:transparent;color:var(--muted)">INDUSTRY</th>
+                  <th onclick="seasonsPage._setDetailSort('ask')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">ASK <span id="detail-sort-ask" style="font-size:10px">↕</span></th>
+                  <th onclick="seasonsPage._setDetailSort('deal')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">FINAL DEAL <span id="detail-sort-deal" style="font-size:10px">↕</span></th>
+                  <th style="background:transparent;color:var(--muted)">SHARKS</th>
+                  <th style="background:transparent;color:var(--muted)">STATUS</th>
                 </tr>
               </thead>
               <tbody id="detail-tbody"></tbody>
