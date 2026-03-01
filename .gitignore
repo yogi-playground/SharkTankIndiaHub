@@ -7,6 +7,19 @@ config/secrets.*
 *.pem
 *.key
 
+# Copyrighted images — sourced from internet, not original work
+# Background: property of Sony Entertainment Television / BBC Studios
+images/Season-5.jpg
+# Shark headshots: property of respective individuals/brands
+images/shark/Aman_Gupta_boAt_headshot.jpg
+images/shark/Anupam_Mittal_Shaadi_headshot.jpg
+images/shark/Kunal_Bahl_Snapdeal_headshot.jpg
+images/shark/Namita_Thapar_Emcure_headshot.jpg
+images/shark/Peyush_Bansal_Lenskart_headshot.jpg
+images/shark/Ritesh_Agarwal_OYO_headshot.jpg
+images/shark/Vineeta_Singh_Sugar_headshot.jpg
+images/shark/Viraj_Bahl_Veeba_headshot.jpg
+
 # OS files
 .DS_Store
 Thumbs.db
