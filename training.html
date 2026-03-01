@@ -677,30 +677,30 @@
         <div class="nav-header">
             <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Hub</a>
             <h2>🦈 SHARK TANK<br><span>ACADEMY</span></h2>
-            <p>founder → investor-ready</p>
-            <span class="level-badge"><i class="fas fa-book-open"></i> 4 levels · 20+ modules</span>
+            <p>beginner founder → intermediate pitch-ready</p>
+            <span class="level-badge"><i class="fas fa-book-open"></i> short path · simple examples</span>
         </div>
 
         <!-- Nav tree structure (will be populated by JS but we write static for clarity, dynamic active state) -->
         <div class="nav-section">
-            <div class="nav-level"><i class="fas fa-seedling"></i> LEVEL 1 · FOUNDATION</div>
-            <div class="nav-item" data-module="m1_1"><i class="fas fa-cube"></i> 1.1 Business Models Decoded</div>
-            <div class="nav-item" data-module="m1_2"><i class="fas fa-calculator"></i> 1.2 Investor Terminology (15)</div>
-            <div class="nav-item" data-module="m1_3"><i class="fas fa-chart-line"></i> 1.3 Unit Economics Deep Dive</div>
+            <div class="nav-level"><i class="fas fa-seedling"></i> LEVEL 1 · BEGINNER BASICS</div>
+            <div class="nav-item" data-module="m1_1"><i class="fas fa-cube"></i> 1.1 Business Model Basics</div>
+            <div class="nav-item" data-module="m1_2"><i class="fas fa-calculator"></i> 1.2 5 Core Investor Terms</div>
+            <div class="nav-item" data-module="m1_3"><i class="fas fa-chart-line"></i> 1.3 Unit Economics (Simple)</div>
             <div class="nav-item checklist" data-module="chk1"><i class="fas fa-check-circle"></i> Level 1 checklist</div>
         </div>
 
         <div class="nav-section">
-            <div class="nav-level"><i class="fas fa-chart-bar"></i> LEVEL 2 · NUMBERS MASTER</div>
-            <div class="nav-item" data-module="m2_1"><i class="fas fa-table"></i> 2.1 3‑Year Revenue Projection</div>
-            <div class="nav-item" data-module="m2_2"><i class="fas fa-chart-pie"></i> 2.2 Break‑Even Analysis</div>
-            <div class="nav-item" data-module="m2_3"><i class="fas fa-bullhorn"></i> 2.3 Marketing Math & Channels</div>
-            <div class="nav-item" data-module="m2_4"><i class="fas fa-boxes"></i> 2.4 Cost & Working Capital</div>
+            <div class="nav-level"><i class="fas fa-chart-bar"></i> LEVEL 2 · INTERMEDIATE NUMBERS</div>
+            <div class="nav-item" data-module="m2_1"><i class="fas fa-table"></i> 2.1 3-Year Revenue Plan</div>
+            <div class="nav-item" data-module="m2_2"><i class="fas fa-chart-pie"></i> 2.2 Break-even Check</div>
+            <div class="nav-item" data-module="m2_3"><i class="fas fa-bullhorn"></i> 2.3 Marketing Math</div>
+            <div class="nav-item" data-module="m2_4"><i class="fas fa-boxes"></i> 2.4 Working Capital Basics</div>
             <div class="nav-item checklist" data-module="chk2"><i class="fas fa-check-circle"></i> Level 2 checklist</div>
         </div>
 
         <div class="nav-section">
-            <div class="nav-level"><i class="fas fa-rocket"></i> LEVEL 3 · GROWTH STRATEGIST</div>
+            <div class="nav-level"><i class="fas fa-rocket"></i> LEVEL 3 · NEXT STEP (OPTIONAL)</div>
             <div class="nav-item" data-module="m3_1"><i class="fas fa-globe"></i> 3.1 TAM · SAM · SOM</div>
             <div class="nav-item" data-module="m3_2"><i class="fas fa-city"></i> 3.2 Geographic Expansion</div>
             <div class="nav-item" data-module="m3_3"><i class="fas fa-cubes"></i> 3.3 Product Line Economics</div>
@@ -709,7 +709,7 @@
         </div>
 
         <div class="nav-section">
-            <div class="nav-level"><i class="fas fa-shield"></i> LEVEL 4 · INVESTOR-READY</div>
+            <div class="nav-level"><i class="fas fa-shield"></i> LEVEL 4 · FINAL PITCH PREP</div>
             <div class="nav-item" data-module="m4_1"><i class="fas fa-question-circle"></i> 4.1 Top 50 Questions</div>
             <div class="nav-item" data-module="m4_2"><i class="fas fa-comment-dots"></i> 4.2 STAR Framework</div>
             <div class="nav-item" data-module="m4_3"><i class="fas fa-hand-pointer"></i> 4.3 "If they ask…" cheat sheet</div>
@@ -753,8 +753,8 @@
         <div class="content-card" id="moduleContent">
             <!-- initial load – will be replaced by JS -->
             <h1>🦈 Welcome, founder</h1>
-            <p>Select a module from the left navigation to begin your investor readiness journey. Use the accessibility panel to adjust font size or contrast.</p>
-            <div class="chart-placeholder">📊 “Crunchy Fit” case study will appear throughout</div>
+            <p>Start with beginner basics, then move to intermediate investor prep. Each lesson is short and uses one simple example.</p>
+            <div class="chart-placeholder">📊 Example startup used throughout: Crunchy Fit (healthy snacks)</div>
         </div>
 
         <!-- bottom pagination -->
@@ -807,56 +807,141 @@
         // ---------- MODULE DATA (abbreviated samples, but rich enough to feel real) ----------
         const modules = {
             m1_1: {
-                title: "1.1 Business Models Decoded",
+                title: "1.1 Business Model Basics",
                 body: `
-                    <h2>Business Models Decoded</h2>
-                    <p><strong>Crunchy Fit</strong> – D2C healthy snacks (millet based). 70% website, 20% Amazon, 10% offline.</p>
+                    <h2>Pick one clear model</h2>
+                    <p><strong>Crunchy Fit</strong> sells healthy snacks: 70% website, 20% Amazon, 10% stores.</p>
                     <table>
-                        <tr><th>Model</th><th>Description</th><th>Investor focus</th></tr>
-                        <tr><td>D2C</td><td>Sell direct to consumer</td><td>CAC, repeat rate, margin</td></tr>
-                        <tr><td>Marketplace</td><td>Amazon / retail</td><td>take rate, channel economics</td></tr>
+                        <tr><th>Channel</th><th>What it means</th><th>What investor checks</th></tr>
+                        <tr><td>Website</td><td>You sell direct</td><td>Profit per order</td></tr>
+                        <tr><td>Amazon</td><td>Marketplace reach</td><td>Platform fees + returns</td></tr>
                     </table>
-                    <div class="chart-placeholder">🖼️ Decision tree: business model flowchart</div>
-                    <div class="highlight">▶️ Exercise: map your revenue streams like Crunchy Fit.</div>
+                    <div class="highlight">Simple task: write your top 2 channels and expected monthly sales from each.</div>
                 `
             },
             m1_2: {
-                title: "1.2 Investor Terminology (15 metrics)",
+                title: "1.2 5 Core Investor Terms",
                 body: `
-                    <h2>Essential 15 metrics</h2>
+                    <h2>Start with only 5 terms</h2>
                     <table>
-                        <tr><th>Metric</th><th>Formula</th><th>Crunchy Fit</th></tr>
-                        <tr><td>Gross Margin</td><td>(Revenue-COGS)/Revenue</td><td>60%</td></tr>
-                        <tr><td>CAC</td><td>Marketing cost / new customers</td><td>₹500</td></tr>
-                        <tr><td>LTV</td><td>AOV × frequency × years</td><td>₹2,800</td></tr>
-                        <tr><td>Burn (net)</td><td>Revenue - expenses</td><td>+₹1.3L (profit)</td></tr>
+                        <tr><th>Term</th><th>Meaning</th><th>Crunchy Fit example</th></tr>
+                        <tr><td>Revenue</td><td>Money you collect</td><td>₹10L/month</td></tr>
+                        <tr><td>Gross Margin</td><td>Money left after product cost</td><td>60%</td></tr>
+                        <tr><td>CAC</td><td>Cost to get one customer</td><td>₹500</td></tr>
+                        <tr><td>LTV</td><td>Total value from one customer</td><td>₹2,800</td></tr>
+                        <tr><td>Burn</td><td>Cash lost per month</td><td>₹0 (break-even)</td></tr>
                     </table>
-                    <div class="chart-placeholder">📊 Profitability pyramid visual</div>
+                    <div class="example-box">Example answer: “Our CAC is ₹500 and LTV is ₹2,800, so we earn much more than we spend to acquire.”</div>
                 `
             },
             m1_3: {
-                title: "1.3 Unit Economics Deep Dive",
-                body: `<h2>Unit economics – Crunchy Fit</h2><p>AOV ₹350, variable cost ₹202 → contribution ₹148. Fixed cost ₹3L/month. Breakeven 2027 orders.</p><div class="example-box">⭐ Shark question: "How much do you make per order?" — ₹148 contribution.</div>`
+                title: "1.3 Unit Economics (Simple)",
+                body: `
+                    <h2>Know profit per order</h2>
+                    <p>AOV ₹350 - variable cost ₹202 = contribution ₹148 per order.</p>
+                    <p>If fixed monthly cost is ₹3,00,000, break-even orders ≈ 3,00,000 / 148 = 2,027 orders.</p>
+                    <div class="example-box">Shark-style answer: “We make ₹148 contribution per order and cross break-even after ~2,027 monthly orders.”</div>
+                `
             },
-            chk1: { title: "✅ Level 1 Checklist", body: `<h2>Foundation checklist</h2><ul><li>I can define 15 metrics</li><li>Unit econ calculated</li><li>Business model mapped</li></ul>` },
-            m2_1: { title: "2.1 3‑Year Revenue Projection", body: `<h2>Crunchy Fit projections</h2><table><tr><th>Year</th><th>Customers</th><th>Revenue (L)</th></tr><tr><td>Current</td><td>1200</td><td>16.8</td></tr><tr><td>Y1</td><td>3600</td><td>67.5</td></tr><tr><td>Y2</td><td>8000</td><td>192</td></tr><tr><td>Y3</td><td>15000</td><td>446</td></tr></table><div class="chart-placeholder">📈 revenue growth bar chart</div>` },
-            m2_2: { title: "2.2 Break‑even Analysis", body: `<h2>Break-even orders = 2027/month</h2><p>Current orders 2428 → profitable.</p><div class="chart-placeholder">📉 break‑even chart (cost vs revenue lines)</div>` },
-            m2_3: { title: "2.3 Marketing Math & Channels", body: `<h2>Channel wise CAC</h2><table><tr><th>Channel</th><th>CAC</th><th>payback</th></tr><tr><td>Instagram</td><td>₹500</td><td>10 mo</td></tr><tr><td>Influencer</td><td>₹400</td><td>8 mo</td></tr></table>` },
-            m2_4: { title: "2.4 Cost & Working Capital", body: `<h2>Cash conversion cycle 15 days</h2><p>Working capital need ~₹1.7L.</p>` },
-            chk2: { title: "✅ Level 2 checklist", body: `<h2>Numbers master</h2><ul><li>3 year projections done</li><li>Break‑even known</li><li>Channel CAC table</li></ul>` },
-            m3_1: { title: "3.1 TAM · SAM · SOM", body: `<h2>Market sizing funnel</h2><p>TAM ₹5000Cr, SAM ₹1500Cr, SOM ₹75Cr (Crunchy Fit Y3: 4.46Cr)</p><div class="chart-placeholder">🔄 inverted pyramid</div>` },
-            m3_2: { title: "3.2 Geographic Expansion", body: `<h2>Tier 2 entry cost ₹3L/month</h2><p>ROI 4 months.</p>` },
-            m3_3: { title: "3.3 Product Line Economics", body: `<h2>SKU profitability</h2><table><tr><th>Product</th><th>margin</th><th>repeat</th></tr><tr><td>Masala chips</td><td>62%</td><td>52%</td></tr></table>` },
-            m3_4: { title: "3.4 Cohort & Advanced LTV", body: `<h2>Cohort retention heatmap</h2><p>Month2 retention improved from 45% to 55%.</p>` },
-            chk3: { title: "✅ Level 3 checklist", body: `TAM/SAM/SOM, expansion plan, cohort data ready` },
-            m4_1: { title: "4.1 Top 50 Questions", body: `<h2>sample: "Why this valuation?"</h2><p>7.3x revenue vs industry 8x.</p>` },
-            m4_2: { title: "4.2 STAR Framework", body: `<h2>Situation, Task, Action, Result</h2><p>Example CAC answer.</p>` },
-            m4_3: { title: "4.3 If they ask… cheat sheet", body: `<table><tr><th>If they ask</th><th>check</th></tr><tr><td>CAC</td><td>₹500</td></tr></table>` },
-            m4_4: { title: "4.4 Valuation deep dive", body: `<h2>Revenue multiple ₹8.5Cr – ₹13.5Cr DCF</h2><p>Asking ₹12.5Cr post.</p>` },
-            m4_5: { title: "4.5 Cap table & dilution", body: `<h2>After seed: founder 70.4%</h2><p>Series B ~40%</p>` },
-            m4_6: { title: "4.6 30‑day roadmap", body: `<h2>Week1: metrics, week2: deck, week3: mocks, week4: investor meetings</h2>` },
-            m4_7: { title: "4.7 Mock pitch rubric", body: `<h2>Scorecard /40 = investor ready</h2>` },
-            chk4: { title: "✅ Level 4 checklist", body: `<h2>Expert ready</h2><ul><li>all 50 answers crisp</li><li>negotiation ready</li></ul>` }
+            chk1: {
+                title: "✅ Level 1 Checklist",
+                body: `<h2>Beginner complete</h2><ul><li>I can explain my business model in 30 seconds</li><li>I know 5 key investor terms</li><li>I can calculate profit per order</li></ul>`
+            },
+            m2_1: {
+                title: "2.1 3-Year Revenue Plan",
+                body: `
+                    <h2>Build realistic growth</h2>
+                    <table><tr><th>Year</th><th>Customers</th><th>Revenue (L)</th></tr><tr><td>Now</td><td>1,200</td><td>16.8</td></tr><tr><td>Year 1</td><td>3,600</td><td>67.5</td></tr><tr><td>Year 2</td><td>8,000</td><td>192</td></tr><tr><td>Year 3</td><td>15,000</td><td>446</td></tr></table>
+                    <div class="highlight">Keep assumptions simple: more customers + slightly better repeat rate each year.</div>
+                `
+            },
+            m2_2: {
+                title: "2.2 Break-even Check",
+                body: `
+                    <h2>Are you already profitable?</h2>
+                    <p>Break-even: 2,027 orders/month. Current: 2,428 orders/month.</p>
+                    <div class="example-box">Simple line: “We are above break-even by ~400 orders per month.”</div>
+                `
+            },
+            m2_3: {
+                title: "2.3 Marketing Math",
+                body: `
+                    <h2>Compare channels quickly</h2>
+                    <table><tr><th>Channel</th><th>CAC</th><th>Payback</th></tr><tr><td>Instagram</td><td>₹500</td><td>10 months</td></tr><tr><td>Influencer</td><td>₹400</td><td>8 months</td></tr></table>
+                    <p>Rule: scale channels with lower CAC and faster payback first.</p>
+                `
+            },
+            m2_4: {
+                title: "2.4 Working Capital Basics",
+                body: `
+                    <h2>Cash needed to run operations</h2>
+                    <p>Crunchy Fit needs ~₹1.7L to manage inventory and payment timing.</p>
+                    <div class="highlight">Example: if store payments come in 20 days but suppliers must be paid in 7 days, keep buffer cash ready.</div>
+                `
+            },
+            chk2: {
+                title: "✅ Level 2 Checklist",
+                body: `<h2>Intermediate complete</h2><ul><li>I have a 3-year revenue plan with clear assumptions</li><li>I can explain break-even in one sentence</li><li>I know which marketing channel performs best</li></ul>`
+            },
+            m3_1: {
+                title: "3.1 TAM · SAM · SOM (Quick)",
+                body: `
+                    <h2>Market size in 3 steps</h2>
+                    <p>TAM ₹5,000Cr, SAM ₹1,500Cr, SOM ₹75Cr.</p>
+                    <div class="example-box">Simple pitch line: “We are targeting SOM first, then expanding toward SAM.”</div>
+                `
+            },
+            m3_2: {
+                title: "3.2 Expansion Plan",
+                body: `
+                    <h2>Open one new city carefully</h2>
+                    <p>Estimated launch cost: ₹3L/month. Expected payback: 4 months.</p>
+                `
+            },
+            m3_3: {
+                title: "3.3 Product Profitability",
+                body: `<h2>Best SKU first</h2><table><tr><th>Product</th><th>Margin</th><th>Repeat</th></tr><tr><td>Masala chips</td><td>62%</td><td>52%</td></tr></table>`
+            },
+            m3_4: {
+                title: "3.4 Retention & LTV",
+                body: `<h2>Retention improves LTV</h2><p>Month-2 retention moved from 45% to 55%, improving customer lifetime value.</p>`
+            },
+            chk3: {
+                title: "✅ Level 3 Checklist",
+                body: `<h2>Growth ready</h2><ul><li>TAM/SAM/SOM ready</li><li>1-city expansion plan ready</li><li>Top SKU and retention metrics ready</li></ul>`
+            },
+            m4_1: {
+                title: "4.1 Top Investor Questions",
+                body: `<h2>Common question: Why this valuation?</h2><p>Simple answer: “Our ask is based on growth, margins, and comparable market multiples.”</p>`
+            },
+            m4_2: {
+                title: "4.2 STAR Answer Method",
+                body: `<h2>STAR = Situation, Task, Action, Result</h2><p>Use STAR to answer tough questions in a structured and confident way.</p>`
+            },
+            m4_3: {
+                title: "4.3 Quick Answer Sheet",
+                body: `<table><tr><th>If asked</th><th>Your short answer</th></tr><tr><td>What is your CAC?</td><td>₹500, with payback in 8–10 months.</td></tr></table>`
+            },
+            m4_4: {
+                title: "4.4 Valuation Basics",
+                body: `<h2>Keep valuation logic simple</h2><p>Use revenue multiple range + realistic growth assumptions. Keep one backup valuation range ready.</p>`
+            },
+            m4_5: {
+                title: "4.5 Cap Table & Dilution",
+                body: `<h2>Know founder ownership path</h2><p>Example: after early rounds founder stake can reduce gradually, so plan dilution before fundraising.</p>`
+            },
+            m4_6: {
+                title: "4.6 30-Day Prep Plan",
+                body: `<h2>Weekly plan</h2><p>Week 1 metrics, Week 2 deck, Week 3 mock Q&A, Week 4 investor meetings.</p>`
+            },
+            m4_7: {
+                title: "4.7 Mock Pitch Scorecard",
+                body: `<h2>Simple scoring</h2><p>Score clarity, numbers, confidence, and investor fit. Rehearse until all 4 areas are strong.</p>`
+            },
+            chk4: {
+                title: "✅ Level 4 Checklist",
+                body: `<h2>Pitch ready</h2><ul><li>Core investor answers prepared</li><li>Valuation and dilution explained clearly</li><li>30-day action plan ready</li></ul>`
+            }
         };
 
         const moduleKeys = Object.keys(modules); // order as defined
