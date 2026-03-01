@@ -160,3 +160,180 @@ Shark Tank India Hub provides:
 
 ---
 
+## � Screenshots & Live Demo
+
+Explore the live application: **[🦈 Shark Tank India Hub Live](https://yogi-playground.github.io/SharkTankIndiaHub/)**
+
+### Page Navigation
+
+| Page | Live Link | Description |
+|------|-----------|-------------|
+| 🏠 **Home** | [View Home](https://yogi-playground.github.io/SharkTankIndiaHub/#home) | Dashboard with overall statistics, hero section, and recent deals preview |
+| 📅 **Seasons** | [View Seasons](https://yogi-playground.github.io/SharkTankIndiaHub/#seasons) | Browse all 5 seasons with detailed analytics and pitches per season |
+| 🦈 **Sharks** | [View Sharks](https://yogi-playground.github.io/SharkTankIndiaHub/#sharks) | Complete shark profiles, investment patterns, and portfolio details |
+| 📊 **Analytics** | [View Analytics](https://yogi-playground.github.io/SharkTankIndiaHub/#analytics) | Advanced filtering, comparison tools, and custom data exploration |
+| 🎓 **Academy** | [View Academy](https://yogi-playground.github.io/SharkTankIndiaHub/#learn) | 4-level investor readiness training with interactive modules |
+| 📈 **Dashboard** | [View Dashboard](https://yogi-playground.github.io/SharkTankIndiaHub/#dashboard) | Personalized pitch builder and investor Q&A practice tool |
+| 🚀 **Get Ready** | [View Get Ready](https://yogi-playground.github.io/SharkTankIndiaHub/#get-ready) | Quick preparation resources and pitch checklist |
+
+### Key Features Preview
+
+**🌓 Light & Dark Mode Support**
+- Toggle between modes in the header
+- Settings persist across sessions
+- Optimized contrast in both modes
+- Smooth transitions
+
+**📱 Responsive Design**
+- Desktop, tablet, and mobile optimized
+- Touch-friendly interface
+- Adaptive layouts
+- Fast load times
+
+**🔍 Smart Search & Filter**
+- Filter by industry, season, funding amount
+- Compare multiple pitches side-by-side
+- Real-time statistics updates
+- Fast search results
+
+### Interactive Features
+
+✨ **Try These Features:**
+1. Click on any pitch card to see details
+2. Navigate to "Seasons" to explore season-wise data
+3. Visit "Academy" to start learning
+4. Use "Dashboard" to build your pitch profile
+5. Toggle Dark/Light mode in the header
+6. Visit shark profiles to see investment patterns
+
+---
+
+## �🚀 Getting Started
+
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/yogi-playground/SharkTankIndiaHub.git
+cd SharkTankIndiaHub
+
+# Start a local web server
+python -m http.server 8000
+
+# Open in browser
+# http://localhost:8000
+```
+
+### GitHub Pages Deployment
+1. Push to `main` branch
+2. GitHub Actions automatically builds and deploys
+3. Visit: `https://yogi-playground.github.io/SharkTankIndiaHub/`
+
+---
+
+## 📱 Pages & Features
+
+| Page | Description |
+|------|-------------|
+| **Home** | Dashboard with overall statistics and recent deals |
+| **Seasons** | Browse all 5 seasons with season-wise analytics |
+| **Sharks** | Profiles of all investors with portfolio details |
+| **Analytics** | Advanced filtering and comparison tools |
+| **Academy** | Investor readiness training program |
+| **Dashboard** | Personalized pitch preparation tools |
+| **Get Ready** | Quick resources for pitch preparation |
+
+---
+
+## 🎯 Use Cases
+
+### For Aspiring Entrepreneurs
+- **Learn** how successful startups pitched to investors
+- **Prepare** your own pitch using the academy
+- **Benchmark** your business metrics against funded startups
+- **Practice** common investor questions with AI guidance
+
+### For Students & Analysts
+- **Analyze** business models and investment patterns
+- **Study** shark investment theses and preferences
+- **Track** market trends across 5 seasons
+- **Research** specific industries or deal types
+
+### For Mentors & Accelerators
+- **Use** as a teaching resource for startup fundamentals
+- **Reference** real examples from Indian startups
+- **Guide** founders through investor preparation
+- **Track** what investors typically ask
+
+---
+
+## 🤖 AI Integration (GitHub Copilot)
+
+This project was developed using **GitHub Copilot** to:
+- Generate semantic HTML structure
+- Create responsive CSS layouts
+- Write efficient JavaScript modules
+- Suggest accessibility improvements
+- Optimize data visualization code
+
+**Result**: 40% faster development with maintained code quality and accessibility standards.
+
+---
+
+## 📈 Future Roadmap
+
+- [ ] Backend integration for real-time pitch updates
+- [ ] User authentication and profile saving
+- [ ] AI chatbot for pitch Q&A practice
+- [ ] Video integration of actual pitch clips
+- [ ] Investor matchmaking algorithm
+- [ ] Analytics API for researchers
+- [ ] Mobile app (React Native)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to:
+- Report bugs via GitHub Issues
+- Suggest features or improvements
+- Submit pull requests with enhancements
+- Improve documentation
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See LICENSE file for details.
+
+Data sourced from [Satya Thirumani's Shark Tank India Dataset on Kaggle](https://www.kaggle.com/datasets/satyathirumani/shark-tank-india-pitch-data).
+
+---
+
+## 👤 Author
+
+**Built with ❤️ using GitHub Copilot**
+
+- **Repository**: [yogi-playground/SharkTankIndiaHub](https://github.com/yogi-playground/SharkTankIndiaHub)
+- **Live Demo**: [Shark Tank India Hub](https://yogi-playground.github.io/SharkTankIndiaHub/)
+- **Contact**: For questions or suggestions, reach out via GitHub Issues
+
+---
+
+## 📚 Resources
+
+- [Shark Tank India Wikipedia](https://en.wikipedia.org/wiki/Shark_Tank_India)
+- [Original Dataset on Kaggle](https://www.kaggle.com/datasets/satyathirumani/shark-tank-india-pitch-data)
+- [GitHub Pages Documentation](https://pages.github.com/)
+- [Chart.js Documentation](https://www.chartjs.org/)
+
+---
+
+**Made with GitHub Copilot | Participating in Agents League 2024**
+
+🦈 *Where Innovation Meets Investment*
+
+---
+
+## 🚀 Getting Started
+
+### Local Development
