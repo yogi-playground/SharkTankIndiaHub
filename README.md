@@ -164,17 +164,16 @@ Shark Tank India Hub provides:
 
 Explore the live application: **[🦈 Shark Tank India Hub Live](https://yogi-playground.github.io/SharkTankIndiaHub/)**
 
-### Page Navigation
+### Page Screenshots & Live Links
 
-| Page | Live Link | Description |
-|------|-----------|-------------|
-| 🏠 **Home** | [View Home](https://yogi-playground.github.io/SharkTankIndiaHub/#home) | Dashboard with overall statistics, hero section, and recent deals preview |
-| 📅 **Seasons** | [View Seasons](https://yogi-playground.github.io/SharkTankIndiaHub/#seasons) | Browse all 5 seasons with detailed analytics and pitches per season |
-| 🦈 **Sharks** | [View Sharks](https://yogi-playground.github.io/SharkTankIndiaHub/#sharks) | Complete shark profiles, investment patterns, and portfolio details |
-| 📊 **Analytics** | [View Analytics](https://yogi-playground.github.io/SharkTankIndiaHub/#analytics) | Advanced filtering, comparison tools, and custom data exploration |
-| 🎓 **Academy** | [View Academy](https://yogi-playground.github.io/SharkTankIndiaHub/#learn) | 4-level investor readiness training with interactive modules |
-| 📈 **Dashboard** | [View Dashboard](https://yogi-playground.github.io/SharkTankIndiaHub/#dashboard) | Personalized pitch builder and investor Q&A practice tool |
-| 🚀 **Get Ready** | [View Get Ready](https://yogi-playground.github.io/SharkTankIndiaHub/#get-ready) | Quick preparation resources and pitch checklist |
+| Page | Screenshot | Live Link | Description |
+|------|-----------|-----------|-------------|
+| 🏠 **Home** | ![Home](images/screenshot/home.png) | [View Home](https://yogi-playground.github.io/SharkTankIndiaHub/#home) | Dashboard with overall statistics, hero section, and recent deals preview |
+| 📅 **Seasons** | ![Seasons](images/screenshot/seasons.png) | [View Seasons](https://yogi-playground.github.io/SharkTankIndiaHub/#seasons) | Browse all 5 seasons with detailed analytics and pitches per season |
+| 🦈 **Sharks** | ![Sharks](images/screenshot/shark.png) | [View Sharks](https://yogi-playground.github.io/SharkTankIndiaHub/#sharks) | Complete shark profiles, investment patterns, and portfolio details |
+| 📊 **Analytics** | ![Analytics](images/screenshot/analytics.png) | [View Analytics](https://yogi-playground.github.io/SharkTankIndiaHub/#analytics) | Advanced filtering, comparison tools, and custom data exploration |
+| 🎓 **Academy** | ![Get Ready](images/screenshot/get_ready.png) | [View Academy](https://yogi-playground.github.io/SharkTankIndiaHub/#learn) | 4-level investor readiness training with interactive modules |
+| 📈 **Dashboard** | ![Dashboard](images/screenshot/mydashboard.png) | [View Dashboard](https://yogi-playground.github.io/SharkTankIndiaHub/#dashboard) | Personalized pitch builder and investor Q&A practice tool |
 
 ### Key Features Preview
 
@@ -183,6 +182,7 @@ Explore the live application: **[🦈 Shark Tank India Hub Live](https://yogi-pl
 - Settings persist across sessions
 - Optimized contrast in both modes
 - Smooth transitions
+- View light mode screenshots in `images/screenshot/light/` folder
 
 **📱 Responsive Design**
 - Desktop, tablet, and mobile optimized
