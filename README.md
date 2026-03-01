@@ -277,6 +277,26 @@ This project was developed using **GitHub Copilot** to:
 
 **Result**: 40% faster development with maintained code quality and accessibility standards.
 
+### 🏆 Agents League 2026 Submission
+
+This project is submitted to the **Microsoft Agents League 2026** creative apps track.
+
+**Event Details:**
+- 📅 **Duration**: February 16 - March 1, 2026
+- 🎯 **Track**: 🎨 Creative Apps (GitHub Copilot)
+- 🔗 **Official Event**: [microsoft/agentsleague](https://github.com/microsoft/agentsleague)
+- 💬 **Community**: [Agents League Discord](https://aka.ms/agentsleague/discord)
+
+**Judging Criteria:**
+- Accuracy & Relevance (20%)
+- Reasoning & Multi-step Thinking (20%)
+- Creativity & Originality (15%)
+- User Experience & Presentation (15%)
+- Reliability & Safety (20%)
+- Community Vote (10%)
+
+[📝 View Event Details](https://github.com/microsoft/agentsleague)
+
 ---
 
 ## 📈 Future Roadmap
@@ -328,7 +348,7 @@ Data sourced from [Satya Thirumani's Shark Tank India Dataset on Kaggle](https:/
 
 ---
 
-**Made with GitHub Copilot | Participating in Agents League 2024**
+**Made with GitHub Copilot | Submitted to Agents League 2026**
 
 🦈 *Where Innovation Meets Investment*
 
