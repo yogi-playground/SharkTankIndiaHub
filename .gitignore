@@ -1,0 +1,28 @@
+# Environment & Secrets — never commit these
+.env
+.env.local
+.env.*.local
+**/secrets/
+config/secrets.*
+*.pem
+*.key
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Node (if ever used)
+node_modules/
+dist/
+build/
