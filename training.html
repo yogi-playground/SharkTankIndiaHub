@@ -68,6 +68,26 @@
             background: rgba(0,0,0,0.03);
             border-color: var(--border);
         }
+        html.light .nav-panel {
+            background: #f8f8fc;
+        }
+        html.light .nav-item {
+            color: var(--text);
+            opacity: 0.85;
+        }
+        html.light .nav-item i {
+            color: var(--muted);
+        }
+        html.light .nav-item:hover {
+            background: rgba(232,25,44,0.08);
+        }
+        html.light .nav-item:hover i {
+            color: var(--red);
+        }
+        html.light .nav-level {
+            color: var(--muted);
+            border-bottom-color: var(--border);
+        }
 
         * {
             margin: 0;
@@ -177,7 +197,8 @@
             border-radius: 10px;
             font-size: 0.85rem;
             font-weight: 500;
-            color: rgba(232,232,240,0.65);
+            color: var(--text);
+            opacity: 0.75;
             cursor: pointer;
             transition: all 0.15s;
             border-left: 3px solid transparent;
@@ -542,8 +563,109 @@
             }
         }
     </style>
+
+    <!-- Header Styles -->
+    <style>
+        header nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8,8,16,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 0 32px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        html.light header nav {
+            background: rgba(240,240,246,0.95);
+            border-bottom-color: var(--border);
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        header .logo:hover {
+            transform: scale(1.02);
+        }
+        header .logo-badge {
+            width: 36px;
+            height: 36px;
+            background: var(--red);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        header .logo-text {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--heading);
+        }
+        header .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        header .breadcrumb {
+            color: var(--muted);
+            font-size: 13px;
+            opacity: 0.7;
+        }
+        header .theme-toggle {
+            display: flex;
+            gap: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 8px;
+            padding: 4px;
+            cursor: pointer;
+        }
+        html.light header .theme-toggle {
+            background: rgba(0,0,0,0.05);
+        }
+        header .theme-option {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0.5;
+            transition: all 0.2s;
+        }
+        header .theme-option.active {
+            background: var(--red);
+            color: white;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
+
+<!-- Header Navigation (matching home page) -->
+<header>
+    <nav>
+        <div class="logo" onclick="window.location.href='index.html'">
+            <div class="logo-badge">STI</div>
+            <div class="logo-text">SHARK TANK INDIA HUB</div>
+        </div>
+        <div class="nav-controls">
+            <span class="breadcrumb">🎓 Investor Readiness Academy</span>
+            <div class="theme-toggle" onclick="toggleHeaderTheme()">
+                <div class="theme-option active" id="header-dark-opt">🌙 Dark</div>
+                <div class="theme-option" id="header-light-opt">☀️ Light</div>
+            </div>
+        </div>
+    </nav>
+</header>
 <div class="course-container" id="courseContainer">
     <!-- LEFT NAVIGATION PANEL -->
     <div class="nav-panel">
@@ -644,6 +766,38 @@
 </div>
 
 <script>
+    // Theme toggle function for header
+    function toggleHeaderTheme() {
+        const html = document.documentElement;
+        const isDark = html.classList.contains('light');
+        const darkOpt = document.getElementById('header-dark-opt');
+        const lightOpt = document.getElementById('header-light-opt');
+        
+        if (isDark) {
+            html.classList.remove('light');
+            localStorage.setItem('theme', 'dark');
+            darkOpt.classList.add('active');
+            lightOpt.classList.remove('active');
+        } else {
+            html.classList.add('light');
+            localStorage.setItem('theme', 'light');
+            darkOpt.classList.remove('active');
+            lightOpt.classList.add('active');
+        }
+    }
+    
+    // Load theme preference on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'light') {
+            document.documentElement.classList.add('light');
+            const darkOpt = document.getElementById('header-dark-opt');
+            const lightOpt = document.getElementById('header-light-opt');
+            if (darkOpt) darkOpt.classList.remove('active');
+            if (lightOpt) lightOpt.classList.add('active');
+        }
+    });
+
     (function() {
         // ---------- MODULE DATA (abbreviated samples, but rich enough to feel real) ----------
         const modules = {
