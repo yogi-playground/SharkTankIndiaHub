@@ -3,18 +3,50 @@
 // ═══════════════════════════════════════════════════════════════
 
 const homePage = {
+  _analytics: null,
+  _seasons: null,
+  _allPitches: null,
+  _recentSort: { col: 'ep', dir: 'desc' },
+
+  _setRecentSort(col) {
+    if (this._recentSort.col === col) {
+      this._recentSort.dir = this._recentSort.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      this._recentSort.col = col;
+      this._recentSort.dir = 'desc';
+    }
+    this.init();
+  },
+
   async init() {
     const container = document.getElementById('page-home');
     if (!container) return;
 
     try {
-      const [analytics, seasons, allPitches] = await Promise.all([
-        api.getAnalytics(),
-        api.getSeasons(),
-        api.getPitches(),
-      ]);
+      if (!this._analytics || !this._seasons || !this._allPitches) {
+        const [analytics, seasons, allPitches] = await Promise.all([
+          api.getAnalytics(),
+          api.getSeasons(),
+          api.getPitches(),
+        ]);
+        this._analytics = analytics;
+        this._seasons = seasons;
+        this._allPitches = allPitches;
+      }
 
-      const recentDeals = allPitches.filter(p => p.funded).slice(-8).reverse();
+      const analytics = this._analytics;
+      const seasons = this._seasons;
+      const allPitches = this._allPitches;
+
+      const recentDeals = allPitches.filter(p => p.funded).slice(-8);
+      const { col, dir } = this._recentSort;
+      const mult = dir === 'asc' ? 1 : -1;
+      recentDeals.sort((a, b) => {
+        if (col === 'ep') return mult * ((a.season * 1000 + a.ep) - (b.season * 1000 + b.ep));
+        if (col === 'ask') return mult * ((a.askVal || 0) - (b.askVal || 0));
+        if (col === 'deal') return mult * ((a.dealVal || 0) - (b.dealVal || 0));
+        return 0;
+      });
 
       const seasonCards = (seasons || []).map(s => `
         <div class="card" onclick="app.showSeason(${s.number})" style="cursor:pointer;border-top:3px solid var(--red);text-align:center;transition:transform 0.15s;padding:14px 10px" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform=''">
@@ -90,7 +122,7 @@ const homePage = {
             </div>
             <div class="table-wrap" style="background:rgba(8,8,12,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden;border-radius:12px;height:220px;overflow-y:auto" id="deals-table-container">
               <table style="width:100%">
-                <thead style="position:sticky;top:0;z-index:10"><tr style="background:rgba(20,20,28,0.97)"><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">S/Ep</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Startup</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Industry</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Asked</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Deal</th></tr></thead>
+                <thead style="position:sticky;top:0;z-index:10"><tr style="background:var(--card2)"><th onclick="homePage._setRecentSort('ep')" style="background:var(--card2);color:var(--muted);cursor:pointer;user-select:none">S/Ep ${col === 'ep' ? (dir === 'asc' ? '↑' : '↓') : '↕'}</th><th style="background:var(--card2);color:var(--muted)">Startup</th><th style="background:var(--card2);color:var(--muted)">Industry</th><th onclick="homePage._setRecentSort('ask')" style="background:var(--card2);color:var(--muted);cursor:pointer;user-select:none">Asked ${col === 'ask' ? (dir === 'asc' ? '↑' : '↓') : '↕'}</th><th onclick="homePage._setRecentSort('deal')" style="background:var(--card2);color:var(--muted);cursor:pointer;user-select:none">Deal ${col === 'deal' ? (dir === 'asc' ? '↑' : '↓') : '↕'}</th></tr></thead>
                 <tbody>${dealRows}</tbody>
               </table>
             </div>

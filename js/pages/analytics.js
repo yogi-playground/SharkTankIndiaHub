@@ -6,6 +6,29 @@ const analyticsPage = {
   _season: 'all',
   _allPitches: [],
   _globalAnalytics: null,
+  _industrySort: { col: 'total', dir: 'desc' },
+
+  _isLight() {
+    return document.documentElement.classList.contains('light');
+  },
+
+  _chartTheme() {
+    const light = this._isLight();
+    return {
+      legend: light ? 'rgba(26,26,46,0.7)' : 'rgba(255,255,255,0.5)',
+      ticks: light ? 'rgba(26,26,46,0.65)' : 'rgba(255,255,255,0.55)',
+      ticksSoft: light ? 'rgba(26,26,46,0.5)' : 'rgba(255,255,255,0.35)',
+      grid: light ? 'rgba(10,10,24,0.08)' : 'rgba(255,255,255,0.05)',
+      tipBg: light ? 'rgba(255,255,255,0.96)' : 'rgba(8,8,20,0.95)',
+      tipBorder: light ? 'rgba(10,10,24,0.14)' : 'rgba(255,255,255,0.1)',
+      tipTitle: light ? '#0A0A18' : '#ffffff',
+      tipBody: light ? 'rgba(26,26,46,0.85)' : 'rgba(255,255,255,0.7)',
+      rowEven: light ? 'rgba(10,10,24,0.03)' : 'rgba(255,255,255,0.025)',
+      rowHover: light ? 'rgba(232,25,44,0.05)' : 'rgba(232,25,44,0.07)',
+      barTrack: light ? 'rgba(10,10,24,0.08)' : 'rgba(255,255,255,0.07)',
+      empty: light ? 'rgba(26,26,46,0.35)' : 'rgba(255,255,255,0.25)',
+    };
+  },
 
   // ─── Shark branding colours ────────────────────────────────
   _sharkColors: {
@@ -208,11 +231,11 @@ const analyticsPage = {
             <table class="an-table">
               <thead>
                 <tr>
-                  <th>INDUSTRY</th>
-                  <th class="text-right">PITCHES</th>
-                  <th class="text-right">FUNDED</th>
-                  <th style="min-width:180px">DEAL RATE</th>
-                  <th class="text-right">CAPITAL DEPLOYED</th>
+                  <th onclick="analyticsPage._setIndustrySort('name')" style="cursor:pointer;user-select:none">INDUSTRY <span id="industry-sort-name" style="font-size:10px">↕</span></th>
+                  <th class="text-right" onclick="analyticsPage._setIndustrySort('total')" style="cursor:pointer;user-select:none">PITCHES <span id="industry-sort-total" style="font-size:10px">↓</span></th>
+                  <th class="text-right" onclick="analyticsPage._setIndustrySort('funded')" style="cursor:pointer;user-select:none">FUNDED <span id="industry-sort-funded" style="font-size:10px">↕</span></th>
+                  <th onclick="analyticsPage._setIndustrySort('rate')" style="min-width:180px;cursor:pointer;user-select:none">DEAL RATE <span id="industry-sort-rate" style="font-size:10px">↕</span></th>
+                  <th class="text-right" onclick="analyticsPage._setIndustrySort('investedCr')" style="cursor:pointer;user-select:none">CAPITAL DEPLOYED <span id="industry-sort-investedCr" style="font-size:10px">↕</span></th>
                 </tr>
               </thead>
               <tbody id="industry-tbody"></tbody>
@@ -332,6 +355,16 @@ const analyticsPage = {
     this._updateIndustryTable(data);
   },
 
+  _setIndustrySort(col) {
+    if (this._industrySort.col === col) {
+      this._industrySort.dir = this._industrySort.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      this._industrySort.col = col;
+      this._industrySort.dir = col === 'name' ? 'asc' : 'desc';
+    }
+    this._update(this._season);
+  },
+
   // ─── KPI row ───────────────────────────────────────────────
   _updateKPIs(data) {
     const { kpi, prevKpi } = data;
@@ -372,6 +405,7 @@ const analyticsPage = {
     const ctx = document.getElementById('chartSeasons');
     if (!ctx || !seasonBars) return;
     if (charts.instances['chartSeasons']) charts.instances['chartSeasons'].destroy();
+    const th = this._chartTheme();
 
     const pitchBg = (seasonBars.labels || []).map((_, i) =>
       selSeason && (i + 1) !== selSeason ? 'rgba(232,25,44,0.22)' : 'rgba(232,25,44,0.75)');
@@ -396,17 +430,17 @@ const analyticsPage = {
       options: {
         responsive:true, maintainAspectRatio:false,
         plugins: {
-          legend: { labels: { color:'rgba(255,255,255,0.5)', font:{size:11}, boxWidth:10, padding:14 } },
+          legend: { labels: { color: th.legend, font:{size:11}, boxWidth:10, padding:14 } },
           tooltip: {
-            backgroundColor:'rgba(8,8,20,0.95)', borderColor:'rgba(255,255,255,0.1)', borderWidth:1,
-            titleColor:'#fff', bodyColor:'rgba(255,255,255,0.7)',
+            backgroundColor: th.tipBg, borderColor: th.tipBorder, borderWidth:1,
+            titleColor: th.tipTitle, bodyColor: th.tipBody,
             callbacks: { label: c => c.dataset.label === '₹ Invested (Cr)' ? ` ₹${c.parsed.y}Cr` : ` ${c.parsed.y} ${c.dataset.label}` },
           },
         },
         scales: {
-          y:  { beginAtZero:true, position:'left',  ticks:{color:'rgba(255,255,255,0.35)',font:{size:10}}, grid:{color:'rgba(255,255,255,0.05)'} },
+          y:  { beginAtZero:true, position:'left',  ticks:{color: th.ticksSoft,font:{size:10}}, grid:{color: th.grid} },
           y2: { beginAtZero:true, position:'right', ticks:{color:'rgba(245,197,24,0.55)',font:{size:10},callback:v=>`₹${v}Cr`}, grid:{display:false} },
-          x:  { ticks:{color:'rgba(255,255,255,0.55)',font:{size:11}}, grid:{display:false} },
+          x:  { ticks:{color: th.ticks,font:{size:11}}, grid:{display:false} },
         },
       },
     });
@@ -424,6 +458,7 @@ const analyticsPage = {
     const labels = ['Equity Only','Mixed (Eq+Debt)','Royalty'];
     const values = [dealTypes.equity, dealTypes.mixed, dealTypes.royalty];
     const clrs   = ['#E8192C','#3B82F6','#F5C518'];
+    const th = this._chartTheme();
 
     charts.instances['chartDealTypes'] = new Chart(ctx, {
       type:'doughnut',
@@ -433,8 +468,8 @@ const analyticsPage = {
         plugins: {
           legend: { display:false },
           tooltip: {
-            backgroundColor:'rgba(8,8,20,0.95)', borderColor:'rgba(255,255,255,0.1)', borderWidth:1,
-            titleColor:'#fff', bodyColor:'rgba(255,255,255,0.7)',
+            backgroundColor: th.tipBg, borderColor: th.tipBorder, borderWidth:1,
+            titleColor: th.tipTitle, bodyColor: th.tipBody,
             callbacks: { label: c => { const t = c.dataset.data.reduce((a,b)=>a+b,0); return ` ${c.parsed} deals (${t>0?Math.round(c.parsed/t*100):0}%)`; } },
           },
         },
@@ -459,6 +494,7 @@ const analyticsPage = {
     const ctx = document.getElementById('chartSharks');
     if (!ctx) return;
     if (charts.instances['chartSharks']) charts.instances['chartSharks'].destroy();
+    const th = this._chartTheme();
 
     const clrs = sharks.map(([n]) => this._sharkColors[n] || '#6b6b8f');
     charts.instances['chartSharks'] = new Chart(ctx, {
@@ -473,14 +509,14 @@ const analyticsPage = {
         plugins: {
           legend: { display:false },
           tooltip: {
-            backgroundColor:'rgba(8,8,20,0.95)', borderColor:'rgba(255,255,255,0.1)', borderWidth:1,
-            titleColor:'#fff', bodyColor:'rgba(255,255,255,0.7)',
+            backgroundColor: th.tipBg, borderColor: th.tipBorder, borderWidth:1,
+            titleColor: th.tipTitle, bodyColor: th.tipBody,
             callbacks: { label: c => ` ${c.parsed.x} deals` },
           },
         },
         scales: {
-          x: { beginAtZero:true, ticks:{color:'rgba(255,255,255,0.35)',font:{size:10}}, grid:{color:'rgba(255,255,255,0.05)'} },
-          y: { ticks:{color:'rgba(255,255,255,0.75)',font:{size:12,weight:'600'}}, grid:{display:false} },
+          x: { beginAtZero:true, ticks:{color: th.ticksSoft,font:{size:10}}, grid:{color: th.grid} },
+          y: { ticks:{color: th.legend,font:{size:12,weight:'600'}}, grid:{display:false} },
         },
       },
     });
@@ -510,24 +546,37 @@ const analyticsPage = {
   _updateIndustryTable(data) {
     const tbody = document.getElementById('industry-tbody');
     if (!tbody) return;
-    tbody.innerHTML = data.industries.map((d, i) => {
+    const th = this._chartTheme();
+    const { col, dir } = this._industrySort;
+    const mult = dir === 'asc' ? 1 : -1;
+    const rows = [...data.industries].sort((a, b) => {
+      if (col === 'name') return mult * a.name.localeCompare(b.name);
+      return mult * ((a[col] || 0) - (b[col] || 0));
+    });
+
+    ['name','total','funded','rate','investedCr'].forEach((key) => {
+      const el = document.getElementById('industry-sort-' + key);
+      if (el) el.textContent = col === key ? (dir === 'asc' ? '↑' : '↓') : '↕';
+    });
+
+    tbody.innerHTML = rows.map((d, i) => {
       const c    = d.rate >= 65 ? '#22C55E' : d.rate >= 50 ? '#F5C518' : d.rate >= 35 ? '#F97316' : '#EF4444';
-      const bg   = i % 2 === 0 ? 'rgba(255,255,255,0.025)' : 'transparent';
+      const bg   = i % 2 === 0 ? th.rowEven : 'transparent';
       const icon = this._indIcon(d.name);
       return `
-        <tr style="background:${bg}" onmouseenter="this.style.background='rgba(232,25,44,0.07)'" onmouseleave="this.style.background='${bg}'">
-          <td style="font-weight:600;color:#fff"><span style="margin-right:8px;font-size:15px">${icon}</span>${d.name}</td>
-          <td class="text-right" style="color:rgba(255,255,255,0.5)">${d.total}</td>
+        <tr style="background:${bg}" onmouseenter="this.style.background='${th.rowHover}'" onmouseleave="this.style.background='${bg}'">
+          <td style="font-weight:600;color:var(--text)"><span style="margin-right:8px;font-size:15px">${icon}</span>${d.name}</td>
+          <td class="text-right" style="color:var(--muted)">${d.total}</td>
           <td class="text-right" style="color:var(--green);font-weight:600">${d.funded}</td>
           <td>
             <div style="display:flex;align-items:center;gap:8px">
-              <div style="flex:1;height:4px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden">
+              <div style="flex:1;height:4px;background:${th.barTrack};border-radius:2px;overflow:hidden">
                 <div style="height:100%;width:${d.rate}%;background:${c};border-radius:2px;transition:width 0.5s ease"></div>
               </div>
               <span style="font-size:12px;font-weight:700;color:${c};min-width:34px;text-align:right">${d.rate}%</span>
             </div>
           </td>
-          <td class="text-right" style="color:var(--gold);font-weight:600">${d.investedCr > 0 ? this._fmtCr(d.investedCr) : '<span style=color:rgba(255,255,255,0.25)>—</span>'}</td>
+          <td class="text-right" style="color:var(--gold);font-weight:600">${d.investedCr > 0 ? this._fmtCr(d.investedCr) : `<span style="color:${th.empty}">—</span>`}</td>
         </tr>`;
     }).join('');
   },

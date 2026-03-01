@@ -4,6 +4,7 @@
 
 const seasonsPage = {
   _pitches: null,
+  _seasons: null,
   _filters: { season: 'all', industry: 'all', deal: 'all' },
   _sort: { col: null, dir: 'asc' },
   _detailPitches: null,
@@ -65,13 +66,14 @@ const seasonsPage = {
                   <th onclick="seasonsPage._setSort('ep')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">S/EP <span id="sort-ep" style="font-size:10px">↕</span></th>
                   <th style="background:transparent;color:var(--muted)">STARTUP</th>
                   <th style="background:transparent;color:var(--muted)">INDUSTRY</th>
+                  <th onclick="seasonsPage._setSort('air')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">ON AIR <span id="sort-air" style="font-size:10px">↕</span></th>
                   <th onclick="seasonsPage._setSort('ask')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">ASK <span id="sort-ask" style="font-size:10px">↕</span></th>
                   <th onclick="seasonsPage._setSort('deal')" style="background:transparent;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap">FINAL DEAL <span id="sort-deal" style="font-size:10px">↕</span></th>
                   <th style="background:transparent;color:var(--muted)">SHARKS</th>
                   <th style="background:transparent;color:var(--muted)">STATUS</th>
                 </tr>
               </thead>
-              <tbody id="pitches-tbody"><tr><td colspan="7" style="text-align:center;padding:40px;color:rgba(255,255,255,0.4)">Loading…</td></tr></tbody>
+              <tbody id="pitches-tbody"><tr><td colspan="8" style="text-align:center;padding:40px;color:rgba(255,255,255,0.4)">Loading…</td></tr></tbody>
             </table>
           </div>
           <div id="pitch-count" class="muted" style="font-size:12px;margin-top:10px"></div>
@@ -79,16 +81,34 @@ const seasonsPage = {
       this._initialized = true;
     }
 
-    if (!this._pitches) {
+    if (!this._pitches || !this._seasons) {
       try {
-        this._pitches = await api.getPitches();
+        const [pitches, seasons] = await Promise.all([api.getPitches(), api.getSeasons()]);
+        this._pitches = pitches;
+        this._seasons = seasons;
       } catch (e) {
         document.getElementById('pitches-tbody').innerHTML =
-          '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted)">Failed to load pitches</td></tr>';
+          '<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--muted)">Failed to load pitches</td></tr>';
         return;
       }
     }
     this._render();
+  },
+
+  _parseSeasonDate(dateStr) {
+    if (!dateStr || typeof dateStr !== 'string') return 0;
+    const m = dateStr.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{2})$/);
+    if (!m) return 0;
+    const months = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+    const day = Number(m[1]);
+    const mon = months[m[2]];
+    const year = 2000 + Number(m[3]);
+    if (Number.isNaN(day) || mon === undefined || Number.isNaN(year)) return 0;
+    return Date.UTC(year, mon, day);
+  },
+
+  _getSeasonMeta(seasonNumber) {
+    return (this._seasons || []).find(s => Number(s.number) === Number(seasonNumber)) || null;
   },
 
   _setFilter(key, val, el) {
@@ -175,12 +195,17 @@ const seasonsPage = {
       const mult = dir === 'asc' ? 1 : -1;
       filtered.sort((a, b) => {
         if (col === 'ep')   return mult * ((a.season * 1000 + a.ep) - (b.season * 1000 + b.ep));
+        if (col === 'air') {
+          const aTs = this._parseSeasonDate(this._getSeasonMeta(a.season)?.startDate);
+          const bTs = this._parseSeasonDate(this._getSeasonMeta(b.season)?.startDate);
+          return mult * (aTs - bTs);
+        }
         if (col === 'ask')  return mult * ((a.askVal || 0) - (b.askVal || 0));
         if (col === 'deal') return mult * ((a.dealVal || 0) - (b.dealVal || 0));
         return 0;
       });
     }
-    ['ep','ask','deal'].forEach(c => {
+    ['ep','air','ask','deal'].forEach(c => {
       const el = document.getElementById('sort-' + c);
       if (el) el.textContent = col === c ? (dir === 'asc' ? '↑' : '↓') : '↕';
     });
@@ -189,10 +214,12 @@ const seasonsPage = {
     if (!tbody) return;
 
     if (filtered.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted)">No pitches match your filters</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--muted)">No pitches match your filters</td></tr>';
     } else {
       tbody.innerHTML = filtered.map((p, i) => {
-        const isLive = p.season === 5;
+        const seasonMeta = this._getSeasonMeta(p.season);
+        const isLive = Number(p.season) === 5 && (!seasonMeta || !seasonMeta.endDate);
+        const onAir = seasonMeta?.startDate || '—';
         const rowBg = i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent';
         return `<tr onclick="app.showPitch('${p.id}')" style="cursor:pointer;background:${rowBg};border-bottom:1px solid rgba(255,255,255,0.06)" onmouseenter="this.style.background='rgba(232,25,44,0.07)'" onmouseleave="this.style.background='${rowBg}'">
           <td class="mono" style="font-size:12px;color:var(--muted);white-space:nowrap">S${p.season}&nbsp;E${p.ep}${isLive ? ' 🟡' : ''}</td>
@@ -201,6 +228,7 @@ const seasonsPage = {
             <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
           </td>
           <td><span class="badge badge-industry">${p.industry}</span></td>
+          <td class="mono" style="font-size:12px;color:${isLive ? 'var(--gold)' : 'var(--muted)'}">${onAir}${isLive ? ' · LIVE' : ''}</td>
           <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
           <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? 'var(--green)' : 'var(--muted)'}">
             ${p.funded ? (p.deal || '—') + ' / ' + (p.dealEq || '—') + '%' : '—'}

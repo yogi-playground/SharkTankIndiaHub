@@ -478,7 +478,7 @@
 
 /* Cards */
 .an-card {
-  background: rgba(8, 8, 20, 0.88);
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px 22px;
@@ -531,7 +531,7 @@
   align-items: center;
   gap: 8px;
   padding: 5px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--border);
 }
 .an-sector-row:last-child { border-bottom: none; }
 .an-sector-name {
@@ -543,7 +543,7 @@
 }
 .an-sector-bar-wrap {
   height: 20px;
-  background: rgba(255,255,255,0.04);
+  background: var(--card2);
   border-radius: 3px;
   overflow: hidden;
   position: relative;
@@ -571,14 +571,14 @@
   font-size: 13px;
 }
 .an-table thead tr {
-  background: rgba(20,20,32,0.97);
+  background: var(--card2);
 }
 .an-table th {
   padding: 10px 14px;
   text-align: left;
   font-size: 10px;
   letter-spacing: 1.5px;
-  color: rgba(255,255,255,0.4);
+  color: var(--muted);
   font-weight: 600;
   background: transparent;
   border-bottom: 1px solid var(--border);
@@ -586,7 +586,7 @@
 }
 .an-table td {
   padding: 10px 14px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid var(--border);
   vertical-align: middle;
 }
 .an-table tbody tr:last-child td { border-bottom: none; }

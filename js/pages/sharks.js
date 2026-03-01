@@ -24,6 +24,18 @@ function sharkPhotoUrl(meta) {
 }
 
 const sharksPage = {
+  _dealSort: { col: 'ep', dir: 'desc' },
+
+  _setDealSort(col, sharkName) {
+    if (this._dealSort.col === col) {
+      this._dealSort.dir = this._dealSort.dir === 'asc' ? 'desc' : 'asc';
+    } else {
+      this._dealSort.col = col;
+      this._dealSort.dir = 'desc';
+    }
+    this.showSharkDetail(sharkName);
+  },
+
   async init() {
     const container = document.getElementById('page-sharks');
     if (!container) return;
@@ -131,6 +143,28 @@ const sharksPage = {
       const maxInd = topInd[0]?.[1] || 1;
       const investedCr = totalInvested > 0 ? (totalInvested / 100).toFixed(1) : null;
       const avgDeal = deals.length && totalInvested > 0 ? (totalInvested / deals.length).toFixed(1) : null;
+      const sortCol = this._dealSort.col;
+      const sortDir = this._dealSort.dir;
+      const sortMult = sortDir === 'asc' ? 1 : -1;
+      const sortedDeals = [...deals].sort((a, b) => {
+        if (sortCol === 'ep') return sortMult * ((a.season * 1000 + a.ep) - (b.season * 1000 + b.ep));
+        if (sortCol === 'deal') {
+          const aBd = a.sharkBreakdown && a.sharkBreakdown[sharkName];
+          const bBd = b.sharkBreakdown && b.sharkBreakdown[sharkName];
+          const aAmt = (aBd && aBd.amt) ? aBd.amt : (a.dealAmt || 0);
+          const bAmt = (bBd && bBd.amt) ? bBd.amt : (b.dealAmt || 0);
+          return sortMult * (aAmt - bAmt);
+        }
+        if (sortCol === 'eq') {
+          const aBd = a.sharkBreakdown && a.sharkBreakdown[sharkName];
+          const bBd = b.sharkBreakdown && b.sharkBreakdown[sharkName];
+          const aEq = (aBd && aBd.eq) ? aBd.eq : 0;
+          const bEq = (bBd && bBd.eq) ? bBd.eq : 0;
+          return sortMult * (aEq - bEq);
+        }
+        return 0;
+      });
+      const safeSharkName = sharkName.replace(/'/g, "\\'");
 
       const seasonBadges = [1,2,3,4,5].map(s => {
         const ok = !!seasons[s];
@@ -204,9 +238,9 @@ const sharksPage = {
             <div class="display" style="font-size:18px;margin-bottom:16px">RECENT DEALS</div>
             <div class="table-wrap">
               <table>
-                <thead><tr><th>S/Ep</th><th>Startup</th><th>Industry</th><th>Deal</th><th>Equity</th></tr></thead>
+                <thead><tr><th onclick="sharksPage._setDealSort('ep','${safeSharkName}')" style="cursor:pointer;user-select:none">S/Ep ${sortCol === 'ep' ? (sortDir === 'asc' ? '↑' : '↓') : '↕'}</th><th>Startup</th><th>Industry</th><th onclick="sharksPage._setDealSort('deal','${safeSharkName}')" style="cursor:pointer;user-select:none">Deal ${sortCol === 'deal' ? (sortDir === 'asc' ? '↑' : '↓') : '↕'}</th><th onclick="sharksPage._setDealSort('eq','${safeSharkName}')" style="cursor:pointer;user-select:none">Equity ${sortCol === 'eq' ? (sortDir === 'asc' ? '↑' : '↓') : '↕'}</th></tr></thead>
                 <tbody>
-                  ${[...deals].reverse().slice(0,10).map(p=>{
+                  ${sortedDeals.slice(0,10).map(p=>{
                     const bd = p.sharkBreakdown && p.sharkBreakdown[sharkName];
                     const amt = bd && bd.amt ? '₹'+bd.amt+'L' : (p.deal || '—');
                     const eq = bd && bd.eq ? bd.eq+'%' : '—';
