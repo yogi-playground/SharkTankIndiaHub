@@ -1,0 +1,327 @@
+{
+    "stats": {
+        "totalPitches": 702,
+        "totalDeals": 401,
+        "dealPercentage": 57,
+        "totalInvestedCr": 318.4,
+        "totalInvested": 318.4
+    },
+    "metrics": {
+        "averageDeal": 79,
+        "averageDealCr": 0.8,
+        "largestDeal": 500,
+        "largestDealCr": 5,
+        "dealRate": 57
+    },
+    "charts": {
+        "dealBreakdown": {
+            "labels": [
+                "Funded",
+                "No Deal"
+            ],
+            "values": [
+                401,
+                301
+            ]
+        },
+        "dealTypes": {
+            "labels": [
+                "Equity",
+                "Mixed (Debt+Equity)",
+                "Royalty"
+            ],
+            "values": [
+                282,
+                77,
+                42
+            ]
+        },
+        "industries": {
+            "labels": [
+                "Food and Beverage",
+                "Beauty/Fashion",
+                "Technology/Software",
+                "Medical/Health",
+                "Manufacturing",
+                "Lifestyle/Home",
+                "Business Services",
+                "Children/Education",
+                "Vehicles/Electrical Vehicles",
+                "Fitness/Sports/Outdoors"
+            ],
+            "values": [
+                154,
+                141,
+                67,
+                64,
+                52,
+                46,
+                42,
+                29,
+                22,
+                20
+            ],
+            "funded": [
+                90,
+                83,
+                43,
+                45,
+                26,
+                20,
+                18,
+                17,
+                11,
+                15
+            ]
+        },
+        "seasons": {
+            "labels": [
+                "S1",
+                "S2",
+                "S3",
+                "S4",
+                "S5"
+            ],
+            "pitches": [
+                152,
+                169,
+                157,
+                156,
+                68
+            ],
+            "deals": [
+                70,
+                106,
+                92,
+                92,
+                41
+            ],
+            "invested": [
+                40.2,
+                69.8,
+                67.3,
+                85.5,
+                55.6
+            ]
+        },
+        "sharkDeals": {
+            "labels": [
+                "Aman",
+                "Namita",
+                "Anupam",
+                "Peyush",
+                "Vineeta",
+                "Ritesh",
+                "Amit",
+                "Ashneer Grover",
+                "Kunal Bahl"
+            ],
+            "values": [
+                143,
+                121,
+                108,
+                103,
+                91,
+                53,
+                36,
+                21,
+                19
+            ]
+        }
+    },
+    "industries": [
+        {
+            "name": "Food and Beverage",
+            "total": 154,
+            "funded": 90,
+            "dealRate": 58,
+            "investedCr": 64.9
+        },
+        {
+            "name": "Beauty/Fashion",
+            "total": 141,
+            "funded": 83,
+            "dealRate": 59,
+            "investedCr": 75.9
+        },
+        {
+            "name": "Technology/Software",
+            "total": 67,
+            "funded": 43,
+            "dealRate": 64,
+            "investedCr": 38.6
+        },
+        {
+            "name": "Medical/Health",
+            "total": 64,
+            "funded": 45,
+            "dealRate": 70,
+            "investedCr": 38.4
+        },
+        {
+            "name": "Manufacturing",
+            "total": 52,
+            "funded": 26,
+            "dealRate": 50,
+            "investedCr": 16.3
+        },
+        {
+            "name": "Lifestyle/Home",
+            "total": 46,
+            "funded": 20,
+            "dealRate": 43,
+            "investedCr": 15.9
+        },
+        {
+            "name": "Business Services",
+            "total": 42,
+            "funded": 18,
+            "dealRate": 43,
+            "investedCr": 13.6
+        },
+        {
+            "name": "Children/Education",
+            "total": 29,
+            "funded": 17,
+            "dealRate": 59,
+            "investedCr": 12.9
+        },
+        {
+            "name": "Vehicles/Electrical Vehicles",
+            "total": 22,
+            "funded": 11,
+            "dealRate": 50,
+            "investedCr": 5.9
+        },
+        {
+            "name": "Fitness/Sports/Outdoors",
+            "total": 20,
+            "funded": 15,
+            "dealRate": 75,
+            "investedCr": 11
+        },
+        {
+            "name": "Green/CleanTech",
+            "total": 16,
+            "funded": 8,
+            "dealRate": 50,
+            "investedCr": 6.9
+        },
+        {
+            "name": "Animal/Pets",
+            "total": 9,
+            "funded": 5,
+            "dealRate": 56,
+            "investedCr": 3
+        },
+        {
+            "name": "Agriculture",
+            "total": 7,
+            "funded": 5,
+            "dealRate": 71,
+            "investedCr": 1.9
+        },
+        {
+            "name": "Liquor/Alcohol",
+            "total": 6,
+            "funded": 3,
+            "dealRate": 50,
+            "investedCr": 2.7
+        },
+        {
+            "name": "Electronics",
+            "total": 5,
+            "funded": 3,
+            "dealRate": 60,
+            "investedCr": 4
+        },
+        {
+            "name": "Entertainment",
+            "total": 5,
+            "funded": 2,
+            "dealRate": 40,
+            "investedCr": 2.2
+        },
+        {
+            "name": "Others",
+            "total": 5,
+            "funded": 2,
+            "dealRate": 40,
+            "investedCr": 0.6
+        },
+        {
+            "name": "Hardware",
+            "total": 2,
+            "funded": 1,
+            "dealRate": 50,
+            "investedCr": 0.2
+        }
+    ],
+    "seasons": [
+        {
+            "id": 1,
+            "number": 1,
+            "name": "Season 1",
+            "year": "2021-22",
+            "startDate": "20-Dec-21",
+            "endDate": "4-Feb-22",
+            "totalPitches": 152,
+            "dealsClosedCount": 70,
+            "dealRate": 46,
+            "investedCr": 40.2,
+            "episodes": 36
+        },
+        {
+            "id": 2,
+            "number": 2,
+            "name": "Season 2",
+            "year": "2023",
+            "startDate": "2-Jan-23",
+            "endDate": "10-Mar-23",
+            "totalPitches": 169,
+            "dealsClosedCount": 106,
+            "dealRate": 63,
+            "investedCr": 69.8,
+            "episodes": 51
+        },
+        {
+            "id": 3,
+            "number": 3,
+            "name": "Season 3",
+            "year": "2024",
+            "startDate": "22-Jan-24",
+            "endDate": "31-Mar-24",
+            "totalPitches": 157,
+            "dealsClosedCount": 92,
+            "dealRate": 59,
+            "investedCr": 67.3,
+            "episodes": 52
+        },
+        {
+            "id": 4,
+            "number": 4,
+            "name": "Season 4",
+            "year": "2025",
+            "startDate": "6-Jan-25",
+            "endDate": "18-Mar-25",
+            "totalPitches": 156,
+            "dealsClosedCount": 92,
+            "dealRate": 59,
+            "investedCr": 85.5,
+            "episodes": 52
+        },
+        {
+            "id": 5,
+            "number": 5,
+            "name": "Season 5",
+            "year": "2026",
+            "startDate": "5-Jan-26",
+            "endDate": "",
+            "totalPitches": 68,
+            "dealsClosedCount": 41,
+            "dealRate": 60,
+            "investedCr": 55.6,
+            "episodes": 24
+        }
+    ]
+}

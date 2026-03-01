@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore Shark Tank India pitches, sharks, seasons, and analytics. Discover startup data and get ready to pitch your idea." />
+  <meta name="theme-color" content="#1a1a1a" />
+  <title>Shark Tank India Hub</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-weight='bold'>🦈</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Chart.js for analytics -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+
+<body>
+  <!-- Skip to main content link for keyboard accessibility -->
+  <a href="#app-container" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="logo" onclick="app.showPage('home')">
+      <div class="logo-badge">STI</div>
+      <div class="logo-text">SHARK TANK INDIA HUB</div>
+    </div>
+    <ul class="nav-links">
+      <li><a onclick="app.showPage('home')" id="nav-home" class="active" role="button" tabindex="0" onkeypress="if(event.key==='Enter')app.showPage('home')">🏠 Home</a></li>
+      <li><a onclick="app.showPage('seasons')" id="nav-seasons" role="button" tabindex="0" onkeypress="if(event.key==='Enter')app.showPage('seasons')">📺 Seasons</a></li>
+      <li><a onclick="app.showPage('sharks')" id="nav-sharks" role="button" tabindex="0" onkeypress="if(event.key==='Enter')app.showPage('sharks')">🦈 Sharks</a></li>
+      <li><a onclick="app.showPage('analytics')" id="nav-analytics" role="button" tabindex="0" onkeypress="if(event.key==='Enter')app.showPage('analytics')">📊 Analytics</a></li>
+      <li><a onclick="app.showPage('dashboard')" id="nav-dashboard" role="button" tabindex="0" onkeypress="if(event.key==='Enter')app.showPage('dashboard')">💡 My Dashboard</a></li>
+      <li><a onclick="app.showPage('learn')" id="nav-learn" role="button" tabindex="0" onkeypress="if(event.key==='Enter')app.showPage('learn')">🎯 Get Ready</a></li>
+    </ul>
+    <div class="theme-toggle" onclick="theme.toggle()" role="button" tabindex="0" aria-label="Toggle theme between dark and light mode" onkeypress="if(event.key==='Enter')theme.toggle()" title="Toggle light/dark mode">
+      <div class="theme-toggle-option" id="theme-dark" aria-label="Dark mode"><span>🌙</span> <span class="toggle-label">Dark</span></div>
+      <div class="theme-toggle-option" id="theme-light" aria-label="Light mode"><span>☀️</span> <span class="toggle-label">Light</span></div>
+    </div>
+  </nav>
+
+  <!-- Page Container -->
+  <main id="app-container" role="main">
+    <!-- Home Page -->
+    <div id="page-home" class="page active"></div>
+
+    <!-- Seasons Page -->
+    <div id="page-seasons" class="page"></div>
+
+    <!-- Sharks Page -->
+    <div id="page-sharks" class="page"></div>
+
+    <!-- Analytics Page -->
+    <div id="page-analytics" class="page"></div>
+
+    <!-- Dashboard Page -->
+    <div id="page-dashboard" class="page"></div>
+
+    <!-- Learn Page -->
+    <div id="page-learn" class="page"></div>
+
+    <!-- Detail Pages (shown by app.showSeason / app.showPitch / app.showShark) -->
+    <div id="page-season-detail" class="page"></div>
+    <div id="page-pitch-detail" class="page"></div>
+    <div id="page-shark-detail" class="page"></div>
+  </main>
+
+  <!-- JavaScript disabled fallback -->
+  <noscript>
+    <div style="padding: 20px; text-align: center; background-color: #fff3cd; color: #856404; border: 1px solid #ffc107;">
+      <strong>JavaScript is required</strong> — Please enable JavaScript in your browser to use Shark Tank India Hub.
+    </div>
+  </noscript>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <div class="logo-badge" style="font-size:11px;width:32px;height:32px">STI</div>
+        <span><strong>Shark Tank India Hub</strong> — built for fans and founders.</span>
+      </div>
+      <p>Pitch data sourced from the open dataset by <a href="https://www.kaggle.com/datasets/thirumani/shark-tank-india" target="_blank" rel="noopener noreferrer">Satya Thirumani on Kaggle</a> — all credit to the original compiler. All photos and images used for informational and reference purposes only; copyright remains with their respective owners.</p>
+      <p>Not affiliated with Sony LIV, BBC Studios, or the Shark Tank India production. Data is for illustrative purposes only.</p>
+      <p>Questions or suggestions? Reach out at <a href="mailto:mailme007.stih@manyme.com">mailme007.stih@manyme.com</a></p>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script src="js/core/api.js"></script>
+  <script src="js/core/theme.js"></script>
+  <script src="js/utils/helpers.js"></script>
+  <script src="js/components/charts.js"></script>
+  <script src="js/components/filters.js"></script>
+  <script src="js/components/forms.js"></script>
+  <script src="js/pages/home.js"></script>
+  <script src="js/pages/seasons.js"></script>
+  <script src="js/pages/sharks.js"></script>
+  <script src="js/pages/analytics.js"></script>
+  <script src="js/pages/dashboard.js"></script>
+  <script src="js/pages/learn.js"></script>
+  <script src="js/core/app.js"></script>
+</body>
+</html>
