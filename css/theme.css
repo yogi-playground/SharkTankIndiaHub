@@ -1,8 +1,95 @@
 /* ═══════════════ THEME STYLES ═══════════════ */
 
-/* Light mode specific adjustments if needed */
+/* Light mode specific adjustments */
 html.light {
-  /* Any light-mode specific styles can go here */
+  /* Table styling in light mode */
+  & .table-wrap {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid var(--border);
+  }
+
+  & table {
+    color: var(--text);
+  }
+
+  & table thead {
+    background: var(--card) !important;
+    border-bottom: 2px solid var(--border);
+  }
+
+  & table th {
+    color: var(--muted) !important;
+    background: var(--card) !important;
+    font-weight: 600;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  & table tbody tr {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  }
+
+  & table tbody tr:hover {
+    background: rgba(232, 25, 44, 0.04) !important;
+  }
+
+  & table td {
+    color: var(--text);
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  & table .badge {
+    background: rgba(232, 25, 44, 0.1);
+    color: var(--red);
+  }
+
+  & table .mono {
+    color: var(--text) !important;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Season cards styling in light mode */
+  & .season-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  & .season-card .season-num {
+    color: var(--red);
+  }
+
+  & .season-card .season-deals,
+  & .season-card .season-invested {
+    color: var(--text);
+  }
+
+  /* Card styling in light mode */
+  & .card {
+    background: var(--card);
+    border-color: var(--border);
+    color: var(--text);
+  }
+
+  /* Social links styling in light mode */
+  & .shark-link {
+    color: var(--text) !important;
+    border-color: var(--border) !important;
+    background: rgba(0, 0, 0, 0.04) !important;
+  }
+
+  & .shark-link.linkedin {
+    background: rgba(10, 102, 194, 0.1) !important;
+    border-color: rgba(10, 102, 194, 0.3) !important;
+    color: #0066cc !important;
+  }
+
+  & .shark-link:hover {
+    background: rgba(0, 0, 0, 0.08) !important;
+  }
 }
 
 /* Dark mode (default) */

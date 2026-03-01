@@ -17,15 +17,15 @@ const homePage = {
       const recentDeals = allPitches.filter(p => p.funded).slice(-8).reverse();
 
       const seasonCards = (seasons || []).map(s => `
-        <div class="card" onclick="app.showSeason(${s.number})" style="cursor:pointer;border-top:3px solid var(--red);text-align:center;transition:transform 0.15s" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform=''">
-          <div style="font-family:var(--font-bebas);font-size:72px;color:var(--red);line-height:1">${s.number}</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">${s.year || ''}</div>
-          <div style="display:flex;flex-direction:column;gap:4px;font-size:12px">
-            <div><span class="muted">Pitches</span> <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--heading)">${s.totalPitches || 0}</span></div>
-            <div><span class="muted">Deals</span> <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--green)">${s.dealsClosedCount || 0}</span></div>
-            <div><span class="muted">Invested</span> <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold)">₹${s.investedCr ? s.investedCr.toFixed(0) : '—'}Cr</span></div>
+        <div class="card" onclick="app.showSeason(${s.number})" style="cursor:pointer;border-top:3px solid var(--red);text-align:center;transition:transform 0.15s;padding:14px 10px" onmouseenter="this.style.transform='translateY(-3px)'" onmouseleave="this.style.transform=''">
+          <div style="font-family:var(--font-bebas);font-size:54px;color:var(--red);line-height:1">${s.number}</div>
+          <div style="font-size:11px;color:var(--muted);margin-bottom:6px">${s.year || ''}</div>
+          <div style="display:flex;flex-direction:column;gap:3px;font-size:11px">
+            <div><span style="color:var(--muted)">Pitches</span> <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--heading)">${s.totalPitches || 0}</span></div>
+            <div><span style="color:var(--muted)">Deals</span> <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--green)">${s.dealsClosedCount || 0}</span></div>
+            <div><span style="color:var(--muted)">Invested</span> <span style="font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold)">₹${s.investedCr ? s.investedCr.toFixed(0) : '—'}Cr</span></div>
           </div>
-          ${Number(s.number) === 5 ? '<div style="margin-top:10px;font-size:11px;color:var(--gold);font-weight:600">🟡 LIVE</div>' : ''}
+          ${Number(s.number) === 5 ? '<div style="margin-top:6px;font-size:10px;color:var(--gold);font-weight:600">🟡 LIVE</div>' : ''}
         </div>`).join('');
 
       const dealRows = recentDeals.map((p, i) => `
@@ -38,7 +38,6 @@ const homePage = {
           <td><span class="badge badge-industry">${p.industry || '—'}</span></td>
           <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.55)">${p.ask || '—'}</td>
           <td class="mono" style="font-size:13px;color:#22c55e;font-weight:600">${p.deal || '—'}</td>
-          <td style="font-size:12px;color:rgba(255,255,255,0.6)">${(p.sharks || []).join(', ') || '—'}</td>
         </tr>`).join('');
 //  <p class="hero-sub">Explore all ${analytics?.stats?.totalPitches || 702} pitches, deals, and sharks from all 5 seasons — with real data analytics and prep tools for founders.</p>
       container.innerHTML = `
@@ -55,7 +54,7 @@ const homePage = {
 
         <div class="container">
           <!-- Global stats -->
-          <div class="stat-grid" style="margin-bottom:40px">
+          <div class="stat-grid" style="margin-bottom:10px">
             <div class="card stat-item">
               <div class="stat-num">5</div>
               <div class="label" style="margin-top:4px">Seasons</div>
@@ -76,24 +75,22 @@ const homePage = {
 
           <!-- Seasons grid -->
           ${seasonCards ? `
-          <div style="margin-bottom:56px">
-            <div style="text-align:center;margin-bottom:20px">
-              <div class="display" style="font-size:32px">ALL <span style="color:var(--red)">SEASONS</span></div>
-              <div style="margin-top:6px"><span style="font-size:13px;color:var(--red);cursor:pointer" onclick="app.showPage('seasons')">View all pitches →</span></div>
+          <div style="margin-bottom:32px">
+            <div style="text-align:center;margin-bottom:16px">
+              <div class="display" style="font-size:32px;cursor:pointer" onclick="app.showPage('seasons')">ALL <span style="color:var(--red)">SEASONS</span></div>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px">${seasonCards}</div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px">${seasonCards}</div>
           </div>` : ''}
 
           <!-- Recent deals -->
           ${dealRows ? `
-          <div style="margin-bottom:56px">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px">
+          <div style="margin-bottom:32px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px">
               <div class="display" style="font-size:32px">RECENT <span style="color:var(--green)">DEALS</span></div>
-              <span style="font-size:13px;color:var(--red);cursor:pointer" onclick="app.showPage('seasons')">See all pitches →</span>
             </div>
-            <div class="table-wrap" style="background:rgba(8,8,12,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
-              <table>
-                <thead><tr style="background:rgba(20,20,28,0.97)"><th style="background:transparent;color:rgba(255,255,255,0.5)">S/Ep</th><th style="background:transparent;color:rgba(255,255,255,0.5)">Startup</th><th style="background:transparent;color:rgba(255,255,255,0.5)">Industry</th><th style="background:transparent;color:rgba(255,255,255,0.5)">Asked</th><th style="background:transparent;color:rgba(255,255,255,0.5)">Deal</th><th style="background:transparent;color:rgba(255,255,255,0.5)">Sharks</th></tr></thead>
+            <div class="table-wrap" style="background:rgba(8,8,12,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:hidden;border-radius:12px;height:220px;overflow-y:auto" id="deals-table-container">
+              <table style="width:100%">
+                <thead style="position:sticky;top:0;z-index:10"><tr style="background:rgba(20,20,28,0.97)"><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">S/Ep</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Startup</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Industry</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Asked</th><th style="background:rgba(20,20,28,0.97);color:rgba(255,255,255,0.5)">Deal</th></tr></thead>
                 <tbody>${dealRows}</tbody>
               </table>
             </div>

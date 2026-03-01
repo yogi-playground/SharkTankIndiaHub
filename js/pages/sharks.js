@@ -78,8 +78,8 @@ const sharksPage = {
             <div style="font-size:11px;color:var(--muted);margin-bottom:4px">Top sectors: <span style="color:var(--text)">${topInd}</span></div>
             <div style="font-size:11px;color:var(--muted);margin-bottom:12px">Seasons: <span style="color:var(--text)">${seasonsStr}</span></div>
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-              ${meta.linkedin ? `<a href="${meta.linkedin}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:rgba(10,102,194,0.15);border:1px solid rgba(10,102,194,0.35);color:#4a9fd4;font-size:11px;font-weight:600;text-decoration:none">💼 LinkedIn</a>` : ''}
-              ${meta.web ? `<a href="${meta.web}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--muted);font-size:11px;font-weight:600;text-decoration:none">🌐 Website</a>` : ''}
+              ${meta.linkedin ? `<a href="${meta.linkedin}" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="shark-link linkedin" style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:rgba(10,102,194,0.15);border:1px solid rgba(10,102,194,0.35);color:#4a9fd4;font-size:11px;font-weight:600;text-decoration:none"><img src="images/linkedin.png" alt="LinkedIn" style="width:14px;height:14px;flex-shrink:0"> LinkedIn</a>` : ''}
+              ${meta.web ? `<a href="${meta.web}" target="_blank" rel="noopener" onclick="event.stopPropagation()" class="shark-link" style="display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--muted);font-size:11px;font-weight:600;text-decoration:none">🌐 Website</a>` : ''}
               <span style="font-size:12px;color:${meta.color};margin-left:auto">View profile →</span>
             </div>
           </div>`;
@@ -150,8 +150,8 @@ const sharksPage = {
                 <div class="muted" style="font-size:14px;margin-top:4px">${meta.title}</div>
                 <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px">${seasonBadges}</div>
                 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
-                  ${meta.linkedin ? `<a href="${meta.linkedin}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:8px;background:rgba(10,102,194,0.15);border:1px solid rgba(10,102,194,0.4);color:#4a9fd4;font-size:13px;font-weight:600;text-decoration:none">💼 LinkedIn Profile</a>` : ''}
-                  ${meta.web ? `<a href="${meta.web}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-size:13px;font-weight:600;text-decoration:none">🌐 ${meta.web.replace('https://www.','').replace('https://','').split('/')[0]}</a>` : ''}
+                  ${meta.linkedin ? `<a href="${meta.linkedin}" target="_blank" rel="noopener" class="shark-link linkedin" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:8px;background:rgba(10,102,194,0.15);border:1px solid rgba(10,102,194,0.4);color:#4a9fd4;font-size:13px;font-weight:600;text-decoration:none"><img src="images/linkedin.png" alt="LinkedIn" style="width:16px;height:16px;flex-shrink:0"> LinkedIn Profile</a>` : ''}
+                  ${meta.web ? `<a href="${meta.web}" target="_blank" rel="noopener" class="shark-link" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:8px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-size:13px;font-weight:600;text-decoration:none">🌐 ${meta.web.replace('https://www.','').replace('https://','').split('/')[0]}</a>` : ''}
                 </div>
               </div>
             </div>
