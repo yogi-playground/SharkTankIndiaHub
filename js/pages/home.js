@@ -30,14 +30,14 @@ const homePage = {
 
       const dealRows = recentDeals.map((p, i) => `
         <tr onclick="app.showPitch('${p.id}')" style="cursor:pointer;background:${i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent'};border-bottom:1px solid rgba(255,255,255,0.06)" onmouseenter="this.style.background='rgba(232,25,44,0.07)'" onmouseleave="this.style.background='${i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'transparent'}'">
-          <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.4);white-space:nowrap">S${p.season}&nbsp;E${p.ep}</td>
+          <td class="mono" style="font-size:12px;color:var(--muted);white-space:nowrap">S${p.season}&nbsp;E${p.ep}</td>
           <td>
-            <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:#ffffff;font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
-            <div style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:2px">${p.type || ''}</div>
+            <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:var(--text);font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
+            <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
           </td>
           <td><span class="badge badge-industry">${p.industry || '—'}</span></td>
-          <td class="mono" style="font-size:12px;color:rgba(255,255,255,0.55)">${p.ask || '—'}</td>
-          <td class="mono" style="font-size:13px;color:#22c55e;font-weight:600">${p.deal || '—'}</td>
+          <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'}</td>
+          <td class="mono" style="font-size:13px;color:var(--green);font-weight:600">${p.deal || '—'}</td>
         </tr>`).join('');
 //  <p class="hero-sub">Explore all ${analytics?.stats?.totalPitches || 702} pitches, deals, and sharks from all 5 seasons — with real data analytics and prep tools for founders.</p>
       container.innerHTML = `
