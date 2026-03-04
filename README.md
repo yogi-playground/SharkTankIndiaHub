@@ -1,4 +1,5 @@
-# 🦈 Shark Tank India Hub Live Demo https://www.youtube.com/watch?v=Xi9PjGlls6A
+# 🦈 Shark Tank India Hub 
+**[▶️ Watch Demo Video](https://www.youtube.com/watch?v=Xi9PjGlls6A)**
 
 > **A comprehensive platform for exploring Shark Tank India pitches, learning entrepreneurship, and preparing for investor presentations.**
 >
@@ -184,7 +185,7 @@ Explore the live application: **[🦈 Shark Tank India Hub Live](https://yogi-pl
 
 > Watch the full walkthrough of Shark Tank India Hub — all pages, features, dark/light mode, and pitch detail flow.
 
-**[▶️ Download & Watch Demo Video](https://www.youtube.com/watch?v=Xi9PjGlls6A)**
+**[▶️ Watch Demo Video](https://www.youtube.com/watch?v=Xi9PjGlls6A)**
 
 > *Note: The demo video (~MP4) is included in the repository. Click the link above to download and play, or clone the repo and open `images/video-demo/STIH_Recording 2026-03-01 021747.mp4` locally.*
 
