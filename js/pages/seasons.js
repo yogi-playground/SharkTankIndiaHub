@@ -161,13 +161,13 @@ const seasonsPage = {
           <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:var(--text);font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
           <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
         </td>
-        <td><span class="badge badge-industry">${p.industry}</span></td>
+        <td><span class="badge ${helpers.getIndustryClass(p.industry)}">${p.industry}</span></td>
         <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
         <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? 'var(--green)' : 'var(--muted)'}">
           ${p.funded ? (p.deal || '—') + ' / ' + (p.dealEq || '—') + '%' : '—'}
         </td>
         <td style="font-size:12px;color:var(--muted)">${(p.sharks || []).join(', ') || '—'}</td>
-        <td>${p.funded ? '<span class="badge badge-funded">✓ Funded</span>' : '<span class="badge badge-nodeal">✗ No Deal</span>'}</td>
+        <td>${p.funded ? '<span class="badge badge-funded" style="font-size:13px;padding:6px 16px">✓ FUNDED</span>' : '<span class="badge badge-nodeal">✗ No Deal</span>'}</td>
       </tr>`;
     }).join('');
   },
@@ -227,7 +227,7 @@ const seasonsPage = {
             <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:var(--text);font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
             <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
           </td>
-          <td><span class="badge badge-industry">${p.industry}</span></td>
+          <td><span class="badge ${helpers.getIndustryClass(p.industry)}">${p.industry}</span></td>
           <td class="mono" style="font-size:12px;color:${isLive ? 'var(--gold)' : 'var(--muted)'}">${onAir}${isLive ? ' · LIVE' : ''}</td>
           <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'} / ${p.askEq || '—'}%</td>
           <td class="mono" style="font-size:13px;font-weight:600;color:${p.funded ? 'var(--green)' : 'var(--muted)'}">

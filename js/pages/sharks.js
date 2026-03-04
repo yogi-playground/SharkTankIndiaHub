@@ -247,7 +247,7 @@ const sharksPage = {
                     return `<tr onclick="app.showPitch('${p.id}')" style="cursor:pointer">
                       <td class="mono muted" style="font-size:12px">S${p.season} E${p.ep}</td>
                       <td><div style="display:flex;align-items:center;gap:7px;font-weight:600;color:var(--heading)">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div><div class="muted" style="font-size:11px">${p.type||''}</div></td>
-                      <td><span class="badge badge-industry">${p.industry}</span></td>
+                      <td><span class="badge ${helpers.getIndustryClass(p.industry)}">${p.industry}</span></td>
                       <td class="mono" style="color:var(--green);font-size:13px">${amt}</td>
                       <td class="mono" style="font-size:13px">${eq}</td>
                     </tr>`;

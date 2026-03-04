@@ -67,7 +67,7 @@ const homePage = {
             <div style="display:flex;align-items:center;gap:7px;font-weight:700;color:var(--text);font-size:14px;line-height:1.2">${p.website ? `<img src="https://www.google.com/s2/favicons?domain=${p.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0]}&sz=32" width="16" height="16" style="border-radius:3px;flex-shrink:0" onerror="this.style.display='none'">` : ''}${p.name}</div>
             <div style="font-size:11px;color:var(--muted);margin-top:2px">${p.type || ''}</div>
           </td>
-          <td><span class="badge badge-industry">${p.industry || '—'}</span></td>
+          <td><span class="badge ${helpers.getIndustryClass(p.industry)}">${p.industry || '—'}</span></td>
           <td class="mono" style="font-size:12px;color:var(--muted)">${p.ask || '—'}</td>
           <td class="mono" style="font-size:13px;color:var(--green);font-weight:600">${p.deal || '—'}</td>
         </tr>`).join('');

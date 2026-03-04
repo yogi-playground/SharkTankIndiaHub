@@ -72,4 +72,29 @@ const helpers = {
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
+
+  // Map industry to CSS class
+  getIndustryClass(industry) {
+    const industryMap = {
+      'Food and Beverage': 'badge-food',
+      'Beauty/Fashion': 'badge-beauty',
+      'Technology/Software': 'badge-tech',
+      'Medical/Health': 'badge-medical',
+      'Manufacturing': 'badge-manufacturing',
+      'Lifestyle/Home': 'badge-lifestyle',
+      'Business Services': 'badge-business',
+      'Children/Education': 'badge-education',
+      'Vehicles/Electrical Vehicles': 'badge-vehicles',
+      'Fitness/Sports/Outdoors': 'badge-fitness',
+      'Green/CleanTech': 'badge-green',
+      'Animal/Pets': 'badge-pets',
+      'Agriculture': 'badge-agriculture',
+      'Liquor/Alcohol': 'badge-liquor',
+      'Electronics': 'badge-electronics',
+      'Entertainment': 'badge-entertainment',
+      'Hardware': 'badge-hardware',
+      'Others': 'badge-others'
+    };
+    return industryMap[industry] || 'badge-others';
+  },
 };

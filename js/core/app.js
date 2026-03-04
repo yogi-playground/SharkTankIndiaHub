@@ -230,7 +230,7 @@ const app = {
               <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:6px">
                 <span class="muted" style="font-size:13px">S${p.season} E${p.ep}</span>
                 ${p.season === 5 ? '<span style="display:inline-block;padding:2px 8px;border-radius:5px;font-size:10px;font-weight:700;background:rgba(245,197,24,0.15);color:var(--gold);border:1px solid rgba(245,197,24,0.4)">🟡 LIVE SEASON</span>' : ''}
-                ${p.industry ? `<span class="muted">·</span><span class="badge badge-industry">${p.industry}</span>` : ''}
+                ${p.industry ? `<span class="muted">·</span><span class="badge ${helpers.getIndustryClass(p.industry)}">${p.industry}</span>` : ''}
                 ${p.type ? `<span class="muted">·</span><span class="muted" style="font-size:12px">${p.type}</span>` : ''}
                 ${p.city ? `<span class="muted">·</span><span class="muted" style="font-size:12px">📍 ${p.city}${p.state ? ', ' + p.state : ''}</span>` : ''}
               </div>
